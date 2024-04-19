@@ -1,0 +1,245 @@
+[{
+  "_id": {
+    "$oid": "64079ed6b2b376b6cd0454f5"
+  },
+  "name": "Fighter",
+  "deck_type": "Main",
+  "description": "Cards representing the actual characters.",
+  "rules": "This card belongs in the Main deck.\nOnly one Fighter can be added to your play during the Planning Phase.",
+  "type_number": 1001,
+  "support": [
+    1006,
+    1007,
+    1008,
+    1022,
+    1030,
+    1031,
+    1032,
+    1034,
+    1045,
+    1047,
+    1055,
+    1057,
+    1068,
+    1069,
+    1070,
+    1071,
+    1076,
+    1077,
+    1079,
+    1080,
+    1087,
+    1088,
+    1089,
+    1090,
+    1103,
+    1109,
+    1110,
+    1132,
+    1138,
+    1147,
+    1158,
+    1159,
+    1161,
+    1165,
+    1166
+  ],
+  "anti_support": [
+    1008,
+    1013,
+    1019,
+    1049,
+    1077,
+    1122,
+    1142,
+    1153
+  ]
+},
+{
+  "_id": {
+    "$oid": "6407a3bbc503d0c6f5a33238"
+  },
+  "name": "Move",
+  "deck_type": "Main",
+  "description": "Cards that are one of a character's attacks.",
+  "rules": "This card belongs in the Main deck.\nOnly one Move can be added to your play during the Planning Phase.",
+  "type_number": 1003,
+  "support": [
+    1022,
+    1033,
+    1035,
+    1037,
+    1038,
+    1042,
+    1110,
+    1111,
+    1121,
+    1130,
+    1131,
+    1134,
+    1158
+  ],
+  "anti_support": [
+    1002,
+    1004,
+    1007,
+    1050,
+    1054,
+    1055,
+    1089,
+    1138,
+    1142,
+    1143,
+    1144,
+    1155,
+    1161
+  ]
+},
+{
+  "_id": {
+    "$oid": "6407bb289b4fb23f5ddab698"
+  },
+  "name": "Aura",
+  "deck_type": "Main",
+  "description": "Cards that represents a character's ability or traits.",
+  "rules": "This card belongs in the Main deck.\nOnly one Aura can be added to your play during the Planning Phase.",
+  "type_number": 1002,
+  "support": [
+    1016,
+    1022,
+    1037,
+    1047,
+    1076,
+    1078,
+    1110,
+    1111,
+    1121,
+    1131,
+    1160,
+    1166
+  ],
+  "anti_support": [
+    1054,
+    1055,
+    1062,
+    1153
+  ]
+},
+{
+  "_id": {
+    "$oid": "640ce41c5f6730657ad8739f"
+  },
+  "name": "Ending",
+  "deck_type": "Main",
+  "description": "Cards that are finishing blows.",
+  "rules": "This card belongs in the Main deck.\nOnly one Ending can be added to your play during the Planning Phase.",
+  "type_number": 1004,
+  "support": [
+    1019,
+    1110,
+    1114,
+    1134
+  ],
+  "anti_support": [
+    1004,
+    1007,
+    1029,
+    1054,
+    1064,
+    1089,
+    1113,
+    1144
+  ]
+},
+{
+  "_id": {
+    "$oid": "640ce4bf5f6730657ad873be"
+  },
+  "name": "Event",
+  "deck_type": "Pluck",
+  "description": "Cards that depict events or activities.",
+  "rules": "This card belongs in the Pluck deck.",
+  "type_number": 1007,
+  "support": [
+    1011,
+    1012,
+    1037,
+    1073,
+    1075
+  ],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "64108db9159c81c7afebd103"
+  },
+  "name": "Comeback",
+  "deck_type": "Pluck",
+  "description": "Cards represent a character's method of getting back into battle or how they prepare for future battles. ",
+  "rules": "This card belongs in the Pluck deck.",
+  "type_number": 1008,
+  "support": [
+    1037,
+    1057,
+    1058,
+    1059,
+    1060,
+    1101,
+    1109,
+    1110,
+    1111
+  ],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "64108dee159c81c7afebd104"
+  },
+  "name": "Item",
+  "deck_type": "Pluck",
+  "description": "Cards that are items or equipment belonging to a character.",
+  "rules": "This card belongs in the Pluck deck.",
+  "type_number": 1006,
+  "support": [
+    1037,
+    1040,
+    1041,
+    1042,
+    1043,
+    1044,
+    1047,
+    1074,
+    1092,
+    1099,
+    1101,
+    1128,
+    1139,
+    1159
+  ],
+  "anti_support": [
+    1039,
+    1063,
+    1083,
+    1128,
+    1139
+  ]
+},
+{
+  "_id": {
+    "$oid": "64108e0e159c81c7afebd105"
+  },
+  "name": "Any Type",
+  "deck_type": "Main",
+  "description": "Main deck cards representing Max Variable.",
+  "rules": "This card belongs in the Main deck.\nCan be used in place of any card type during the Planning Phase.\nNo limit to the number of Any Types that can be added.",
+  "type_number": 1005,
+  "support": [
+    1033,
+    1035,
+    1037,
+    1092,
+    1115,
+    1116
+  ],
+  "anti_support": []
+}]

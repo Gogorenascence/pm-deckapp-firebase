@@ -1,0 +1,12 @@
+FROM python:3.10-alpine
+RUN python -m pip install --upgrade pip
+# RUN apk add --update --no-cache --virtual .tmp-build-deps \
+#     gcc libc-dev linux-headers postgresql-dev \
+#     && apk add libffi-dev
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+RUN chmod +x /wait
+WORKDIR /deps
+COPY requirements.txt requirements.txt
+RUN python -m pip install -r requirements.txt
+WORKDIR /app
+CMD uvicorn main:app --reload --host 0.0.0.0

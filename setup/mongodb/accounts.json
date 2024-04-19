@@ -1,0 +1,153 @@
+[{
+  "_id": {
+    "$oid": "64ec3b8382c5729f0b36e155"
+  },
+  "email": "jogs255much@gmail.com",
+  "password": "$2b$12$o9YMmCvbEwmOft/yyOlHkOIUCtrw6aMdgRbfgDtHEVfxUK1C3cGeW",
+  "username": "jogger8",
+  "unhashed_password": "pass",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": null,
+  "favorited_decks": [
+    "64fb5519fa55ac14231ef469",
+    "64f8aef2a717cc4a96fd8475",
+    "64f8c029a717cc4a96fd8d61",
+    "64f80d35525e01063274ab8c",
+    "64a3836ebdfcda9852d1a625",
+    "6567caa86b97532b76bf65a9",
+    "6567cafc6b97532b76bf65b0"
+  ]
+},
+{
+  "_id": {
+    "$oid": "64ec43f682c5729f0b36e156"
+  },
+  "email": "nantahkl@gmail.com",
+  "password": "$2b$12$4Lwb4zEvq8fj3dJ2/DMyue74k9g5KaW5CZQrkD.B5kN0XkPX2jdLu",
+  "username": "gogorenascence",
+  "unhashed_password": "123",
+  "collection": [],
+  "wishlist": [],
+  "decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": null,
+  "favorited_decks": []
+},
+{
+  "_id": {
+    "$oid": "64ecc30f82c5729f0b36e158"
+  },
+  "email": "nantahkl@gmail.com",
+  "password": "$2b$12$svdkztO/DALHeTxD5UBJaOB3k2YCyidWemg4uD51UBrS3pLr/2QTS",
+  "username": "TeamPlayMaker",
+  "unhashed_password": "pass",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member",
+    "admin"
+  ],
+  "created_on": null,
+  "favorited_decks": [
+    "64fc6447eff176ba42293519",
+    "6567d2ce6b97532b76bf65b7",
+    "65712e5b0bb745cd65277818",
+    "657f2e8a578eec6c6f07376d",
+    "6571e9e30bb745cd65277829",
+    null,
+    null
+  ]
+},
+{
+  "_id": {
+    "$oid": "64f0c885b2d3aa9e7e7d16fc"
+  },
+  "email": "string@gmail.com",
+  "password": "$2b$12$lasOahz/k7uaGX4iPXA0HO8t3eGndA54EKzTQ2WXS1E2v7d1yx4xy",
+  "username": "jogger8000",
+  "unhashed_password": "password",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "roles": [
+    "member"
+  ],
+  "favorited_decks": null
+},
+{
+  "_id": {
+    "$oid": "64f69854879b29f8b4dd51cd"
+  },
+  "email": "waterslug10@gmail.com",
+  "password": "$2b$12$B5KYvsMTKqAqKcq1rOV3l.1zzM3Fy00zFF93/sObbDglQ90I1l0HS",
+  "username": "wawasluggy",
+  "unhashed_password": "password",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "favorited_decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 5,
+    "time": "02:54",
+    "full_time": "2023-09-05T02:54:12.111252"
+  }
+},
+{
+  "_id": {
+    "$oid": "64fb54e2fa55ac14231ef408"
+  },
+  "email": "346eggeggegg@cake.com",
+  "password": "$2b$12$wSYUZChRejdr/GZSCd0AU.bR2/ZKoCEl/h7MDbrt0j3ZhL4rJj78m",
+  "username": "cllaad",
+  "unhashed_password": "burningMushroomTree3&",
+  "collection": null,
+  "wishlist": null,
+  "decks": null,
+  "favorited_decks": null,
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2023,
+    "month": 9,
+    "day": 8,
+    "time": "17:07",
+    "full_time": "2023-09-08T17:07:46.388804"
+  }
+},
+{
+  "_id": {
+    "$oid": "65cd905d094771042159e458"
+  },
+  "email": "korne@sbcglobal.net",
+  "password": "$2b$12$QQMy557bFEY05TpVz1OtKeoGn4UPc2bw/3oAQl/19NGAsez2/GNhe",
+  "username": "HyperAttack",
+  "unhashed_password": "KingGambit23X!",
+  "collection": [],
+  "wishlist": [],
+  "decks": [],
+  "favorited_decks": [],
+  "roles": [
+    "member"
+  ],
+  "created_on": {
+    "year": 2024,
+    "month": 2,
+    "day": 15,
+    "time": "04:17",
+    "full_time": "2024-02-15T04:17:33.994224"
+  }
+}]

@@ -1,0 +1,157 @@
+[{
+  "_id": {
+    "$oid": "65c27607655d53f5b5e214e7"
+  },
+  "title": "Test Article",
+  "subtitle": "This is a Test",
+  "author": "John Cussack",
+  "created": "2-6-2024",
+  "updated": null,
+  "section": "Lore",
+  "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+  "images": {
+    "1": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
+        "caption": "This is another card image",
+        "link": "cards/1001",
+        "order": 8,
+        "alt_text": "PantheraMan"
+      }
+    ],
+    "4": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
+        "caption": "This is a card image",
+        "link": "cards/1007",
+        "order": 2,
+        "alt_text": "Swift Guard"
+      },
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
+        "caption": "This is also a card image",
+        "link": "cards/1005",
+        "order": 0,
+        "alt_text": "Golden Wall"
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "65c652d7833f10de9b0740f3"
+  },
+  "title": "This is a test",
+  "subtitle": "Testing",
+  "author": "",
+  "created": "",
+  "updated": null,
+  "section": "Lore",
+  "text": "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\",",
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "65c6548c833f10de9b0740f4"
+  },
+  "title": "Test",
+  "subtitle": "This is a test",
+  "author": "TeamPlayMaker",
+  "created": "2024-02-09",
+  "updated": null,
+  "section": "Lore",
+  "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+  "images": {}
+},
+{
+  "_id": {
+    "$oid": "65c657e8833f10de9b0740f5"
+  },
+  "title": "Test",
+  "subtitle": "This is a test",
+  "author": "TeamPlayMaker",
+  "created": "2024-02-09",
+  "updated": null,
+  "section": "Lore",
+  "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+  "images": {
+    "4": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
+        "caption": "This is a card image",
+        "link": "cards/1007",
+        "order": 2,
+        "alt_text": "Swift Guard"
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "65c659f3833f10de9b0740f6"
+  },
+  "title": "sdfsdf",
+  "subtitle": "sdfsd",
+  "author": "TeamPlayMaker",
+  "created": "2024-02-09",
+  "updated": null,
+  "section": "Card Releases",
+  "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.//Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.//Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.//Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?//Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+  "images": {
+    "1": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g1pmf.png",
+        "caption": "testing",
+        "link": "cards/1001",
+        "order": 8,
+        "alt_text": "PantheraMan"
+      }
+    ],
+    "4": [
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwm.png",
+        "caption": "This is a card image",
+        "link": "cards/1007",
+        "order": 2,
+        "alt_text": "Swift Guard"
+      },
+      {
+        "src": "https://playmakercards.s3.us-west-1.amazonaws.com/i1g2gwf.png",
+        "caption": "test",
+        "link": "cards/1005",
+        "order": 0,
+        "alt_text": "Golden Wall"
+      }
+    ]
+  }
+},
+{
+  "_id": {
+    "$oid": "65ca4210dc7102095a069881"
+  },
+  "title": "test",
+  "subtitle": "sdfsd",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-01-30",
+  "updated": null,
+  "section": "Game Play and Mechanics",
+  "content": "",
+  "images": {},
+  "news": false,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "65ca4765dc7102095a069882"
+  },
+  "title": "jkbkjh",
+  "subtitle": "jkhlkj",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-02-01",
+  "updated": null,
+  "section": "Game Play and Mechanics",
+  "content": "",
+  "images": {},
+  "news": false,
+  "site_link": ""
+}]

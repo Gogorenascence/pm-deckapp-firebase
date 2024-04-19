@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "64079f10b2b376b6cd0454f6"
+  },
+  "name": "Trigger",
+  "rules": "This effect can only be resolved at the moment its noted condition is met.\nAll trigger effects are optional.",
+  "effect_number": 1001,
+  "anti_support": [
+    1063,
+    1089,
+    1124
+  ],
+  "support": [
+    1070,
+    1072,
+    1141,
+    1147
+  ]
+},
+{
+  "_id": {
+    "$oid": "64079f5db2b376b6cd0454f7"
+  },
+  "name": "Critical",
+  "rules": "This effect can only be resolved when you are at Critical or Second Wind.\nAll critical effects are optional.",
+  "effect_number": 1002,
+  "anti_support": [],
+  "support": [
+    1059,
+    1060
+  ]
+},
+{
+  "_id": {
+    "$oid": "6407aaae5139f66679d6ac52"
+  },
+  "name": "Limited",
+  "rules": "This effect can only be resolved once while this card is face-up.\nAll limited effects are optional.",
+  "effect_number": 1003
+}]

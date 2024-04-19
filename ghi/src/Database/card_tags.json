@@ -1,0 +1,103 @@
+[{
+  "_id": {
+    "$oid": "6407a27fc503d0c6f5a33233"
+  },
+  "name": "5 HP",
+  "rules": "This card starts with 5 HP when defending.",
+  "tag_number": 1001,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "6407a29bc503d0c6f5a33234"
+  },
+  "name": "Focus",
+  "rules": "This card requires a Focus roll.",
+  "tag_number": 1002,
+  "support": [
+    1002,
+    1007,
+    1022,
+    1025,
+    1026,
+    1044,
+    1046,
+    1048,
+    1049,
+    1056,
+    1074,
+    1091,
+    1101,
+    1102,
+    1103,
+    1105,
+    1116,
+    1121,
+    1125
+  ],
+  "anti_support": [
+    1064,
+    1113
+  ]
+},
+{
+  "_id": {
+    "$oid": "6407ac305139f66679d6ac54"
+  },
+  "name": "Auto",
+  "rules": "This card's main effect resolves immediately after being revealed in a play or Active Pluck.",
+  "tag_number": 1003,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "640ce5e85f6730657ad873cb"
+  },
+  "name": "Max 1",
+  "rules": "You can only resolve 1 card with this tag per round.",
+  "tag_number": 1005,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "64124686d762a869c0b2e12d"
+  },
+  "name": "Stay",
+  "rules": "You can keep this card in your play area at the end of a round.",
+  "tag_number": 1004,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "641292cf38b70f477bb72e6f"
+  },
+  "name": "n/a",
+  "rules": "",
+  "tag_number": 1000,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "657793799691c90c6b0ce76d"
+  },
+  "name": "Cycle",
+  "rules": "The effects of this card (limited effects excluded) can be resolved each round.",
+  "tag_number": 1006,
+  "support": [],
+  "anti_support": []
+},
+{
+  "_id": {
+    "$oid": "65b70deee2ecede8e472ac23"
+  },
+  "name": "Hit 1",
+  "rules": "If this card is not defending or has not resolved its main effect, deal 1 damage to a foe. You can't defend with or resolve the main effect of this card for the rest of the round.",
+  "tag_number": 1007,
+  "support": [],
+  "anti_support": []
+}]
