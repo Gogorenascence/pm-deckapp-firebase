@@ -130,7 +130,6 @@ function HowTosPage() {
                             <option value="oldest">Oldest</option>
                         </select>
                     </div>
-                    <br/>
                     <div className="flex">
                         { account && account.roles.includes("admin")?
                             <NavLink to="/howtocreate">

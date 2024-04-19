@@ -75,9 +75,9 @@ function CardPool({
                                 {all_cards.slice(0, showMore).map((card, index) => {
                                     return (
                                         <div className="flex-content" key={index.toString() + card.card_number.toString()}>
-                                            { ((card.card_type[0] < 1006 && main_list.length < 60) ||
+                                            { ( (card.card_type[0] < 1006 && main_list.length < 60) ||
                                                 (card.card_type[0] > 1005 && (card.hero_id === "GEN" || main_list?.filter(cardItem => cardItem.hero_id === card.hero_id).length > 3) && pluck_list.length < 30))
-                                                && combinedList.filter(cardItem => cardItem.card_number === card.card_number).length < 4 ?
+                                                && main_list.concat(pluck_list).filter(cardItem => cardItem.card_number === card.card_number).length < 4 ?
                                                 <img
                                                     onClick={() => handleClick(card)}
                                                     className={seeCombinedList(card) ? "selected builder-card pointer glow3" : "builder-card pointer glow3"}
