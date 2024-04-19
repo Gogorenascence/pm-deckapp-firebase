@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import { HowToQueryContext } from "../../Context/HowToQueryContext";
+import howToQueries from "../../QueryObjects/HowToQueries";
 
 
 function HowTosPage() {
@@ -21,8 +22,7 @@ function HowTosPage() {
 
     const getHowTos = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/`);
-        const data = await response.json();
+        const data = await howToQueries.getHowTosData();
 
         console.log(data[1])
 

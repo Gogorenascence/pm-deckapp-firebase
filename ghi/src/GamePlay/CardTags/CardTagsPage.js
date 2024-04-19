@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick";
 import { shortenedText } from "../../Helpers";
+import cardTagQueries from "../../QueryObjects/CardTagQueries";
 
 function CardTagsPage() {
 
@@ -11,9 +12,8 @@ function CardTagsPage() {
     const [cardTags, setCardTags ] = useState([]);
 
     const getCardTags = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/tags/`);
-        const data = await response.json();
-        const sortedData = [...data.card_tags].sort((a,b) => a.name.localeCompare(b.name));
+        const data = await cardTagQueries.getCardTagsData();
+        const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setCardTags(sortedData.filter(item => item.tag_number !== 1000));
     };
 

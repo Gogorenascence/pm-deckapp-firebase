@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import { NewsQueryContext } from "../Context/NewsQueryContext";
 import { todaysFormattedDate } from "../Helpers";
+import articleQueries from "../QueryObjects/ArticleQueries";
 
 
 function ArticlesPage() {
@@ -27,12 +28,11 @@ function ArticlesPage() {
 
     const getArticles = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/`);
-        const data = await response.json();
+        const data = await articleQueries.getarticlesData();
 
         setLoading(false)
         setArticles(
-            data.articles.sort((a,b) => {
+            data.sort((a,b) => {
                 let comparedArticles = new Date(b.story_date) - new Date(a.story_date)
                 if (comparedArticles === 0) {
                     comparedArticles = b.id.localeCompare(a.id)

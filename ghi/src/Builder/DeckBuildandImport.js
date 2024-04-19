@@ -11,7 +11,7 @@ import DeckImport from './DeckImport';
 import StatsPanel from './StatsPanel';
 // import { beforeLeaving } from '../Helpers';
 import { saveDeckToSessionStorage, loadDeckFromSessionStorage } from '../Storage';
-
+import cardQueries from "../QueryObjects/CardQueries"
 
 function DeckBuildandImport() {
     const savedDeckState = JSON.parse(sessionStorage.getItem('savedDeckState')) || {};
@@ -129,14 +129,13 @@ function DeckBuildandImport() {
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
+        const data = await cardQueries.getCardsData();
 
-        if (data.cards.length == 0 ) {
+        if (data.length == 0 ) {
             setNoCards(true)
         }
 
-        const sortedCards = [...data.cards].sort(sortMethods[sortState].method);
+        const sortedCards = [...data].sort(sortMethods[sortState].method);
 
         setCards(sortedCards);
     };

@@ -1,10 +1,10 @@
 import { db } from "../Firebase"
 import { getDocs, collection } from "firebase/firestore"
 
-const boosterSetQueries = {
-    getboosterSetsData: async function getboosterSetsData() {
-        const boosterSetsCollectionRef = collection(db, "booster_sets")
-        const response = await getDocs(boosterSetsCollectionRef);
+const extraEffectQueries = {
+    getExtraEffectsData: async function getExtraEffectsData() {
+        const extraEffectsCollectionRef = collection(db, "extra_effects")
+        const response = await getDocs(extraEffectsCollectionRef);
         const data = response.docs.map((doc) => ({
             ...doc.data(),
         }))
@@ -13,4 +13,4 @@ const boosterSetQueries = {
     }
 }
 
-export default boosterSetQueries
+export default extraEffectQueries

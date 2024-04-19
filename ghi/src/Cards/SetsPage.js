@@ -4,6 +4,8 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
+import boosterSetQueries from "../QueryObjects/BoosterSetQueries";
+
 
 function SetsPage() {
     const {account} = useContext(AuthContext)
@@ -16,12 +18,11 @@ function SetsPage() {
     const [noBoosterSet, setNoBoosterSet] = useState(false);
 
     const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        if (data.booster_sets.length == 0 ) {
+        const data = await boosterSetQueries.getBoosterSetsData();
+        if (data.length == 0 ) {
             setNoBoosterSet(true)
         }
-        const sortedBoosterSets = [...data.booster_sets].sort(boosterSetSortMethods[boosterSetSortState].method);
+        const sortedBoosterSets = [...data].sort(boosterSetSortMethods[boosterSetSortState].method);
         setBoosterSets(sortedBoosterSets.reverse());
     };
 

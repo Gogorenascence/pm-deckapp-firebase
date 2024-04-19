@@ -11,7 +11,7 @@ function CardsPage() {
     const [boosterSets, setBoosterSets] = useState([]);
 
     const getBoosterSets = async() =>{
-        const data = await boosterSetQueries.getboosterSetsData()
+        const data = await boosterSetQueries.getBoosterSetsData()
         setBoosterSets(data);
     };
 

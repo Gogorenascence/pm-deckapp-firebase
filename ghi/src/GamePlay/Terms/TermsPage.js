@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
+import termQueries from "../../QueryObjects/TermQueries";
 
 
 function TermsPage() {
@@ -10,8 +11,7 @@ function TermsPage() {
     const [terms, setTerms ] = useState([]);
 
     const getTerms = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/terms/`);
-        const data = await response.json();
+        const data = await termQueries.getTermsData();
         const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setTerms(sortedData);
     };

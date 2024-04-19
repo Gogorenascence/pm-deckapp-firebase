@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick";
 import { shortenedText } from "../../Helpers";
+import cardCategoryQueries from "../../QueryObjects/CardCategoryQueries";
 
 
 function CardCategoriesPage() {
@@ -15,10 +16,9 @@ function CardCategoriesPage() {
     const [showSubSeries, setShowSubSeries] = useState(false);
 
     const getCardCategories = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`);
-        const data = await response.json();
+        const data = await cardCategoryQueries.getCardCategoriesData();
 
-        const sortedData = [...data.card_categories].sort((a,b) => a.name.localeCompare(b.name));
+        const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setCardCategories(sortedData);
     };
 

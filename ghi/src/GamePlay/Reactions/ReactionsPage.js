@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick";
 import { shortenedText } from "../../Helpers";
+import reactionQueries from "../../QueryObjects/ReactionQueries";
 
 
 function ReactionsPage() {
@@ -12,9 +13,8 @@ function ReactionsPage() {
     const [reactions, setReactions ] = useState([]);
 
     const getReactions = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/`);
-        const data = await response.json();
-        const sortedData = [...data.reactions].sort((a,b) => a.name.localeCompare(b.name));
+        const data = await reactionQueries.getReactionsData();
+        const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setReactions(sortedData.filter(item => item.tag_number !== 1000));
     };
 

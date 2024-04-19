@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from 'react';
 import { BuilderQueryContext } from '../Context/BuilderQueryContext';
+import boosterSetQueries from '../QueryObjects/BoosterSetQueries';
 
 
 function BuilderCardSearch() {
@@ -19,9 +20,8 @@ function BuilderCardSearch() {
         setShowMore} = useContext(BuilderQueryContext)
 
     const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        setBoosterSets(data.booster_sets);
+        const data = await boosterSetQueries.getBoosterSetsData();
+        setBoosterSets(data);
     };
 
     const handleBoosterSetChange = (event) => {

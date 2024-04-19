@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import ImageWithoutRightClick from "../../Display/ImageWithoutRightClick";
 import { shortenedText } from "../../Helpers";
+import extraEffectQueries from "../../QueryObjects/ExtraEffectQueries";
+
 
 function ExtraEffectsPage() {
 
@@ -11,9 +13,8 @@ function ExtraEffectsPage() {
     const [extraEffects, setExtraEffects ] = useState([]);
 
     const getExtraEffects = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/`);
-        const data = await response.json();
-        const sortedData = [...data.extra_effects].sort((a,b) => a.name.localeCompare(b.name));
+        const data = await extraEffectQueries.getExtraEffectsData();
+        const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setExtraEffects(sortedData.filter(item => item.tag_number !== 1000));
     };
 
