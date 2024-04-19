@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavLink } from 'react-router-dom';
 import ImageWithoutRightClick from "./ImageWithoutRightClick";
+import cardQueries from "../QueryObjects/CardQueries";
 
 
 function CardRow() {
@@ -8,10 +9,9 @@ function CardRow() {
     const [cards, setCards] = useState([]);
 
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
+        const data = await cardQueries.getCardsData()
 
-        setCards(data.cards.sort((a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time)));
+        setCards(data.sort((a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time)));
     };
 
     useEffect(() => {

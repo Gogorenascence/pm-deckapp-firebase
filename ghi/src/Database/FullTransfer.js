@@ -12,6 +12,27 @@ function FullTransfer() {
                 .replace("png", "jpg")
             }))
 
+    // for (let card of cards) {
+    //     console.log(card.created_on)
+    //     if (card.created_on.full_time.$date) {
+    //         const newFullTime = card.created_on.full_time.$date.slice(19)
+    //         card.created_on.full_time = newFullTime
+    //     } else {
+    //         const newFullTime = card.created_on.full_time.slice(19)
+    //         card.created_on.full_time = newFullTime
+    //     }
+    //     if (card.updated_on.full_time.$date) {
+    //         const newFullTime = card["updated_on"]["full_time"]["$date"].slice(19)
+    //         card["updated_on"]["full_time"] = newFullTime
+    //     } else {
+    //         const newFullTime = card["updated_on"]["full_time"].slice(19)
+    //         card["updated_on"]["full_time"] = newFullTime
+    //     }
+    //     // addDoc(cardsCollectionRef, card)
+    // }
+
+    console.log(cards)
+
     let card_categories = require('./card_categories.json').map(category =>
         {category["id"] = category._id.$oid
             return category
@@ -67,49 +88,81 @@ function FullTransfer() {
     const card_categoriesCollectionRef = collection(db, "card_categories")
     const card_tagsCollectionRef = collection(db, "card_tags")
     const card_typesCollectionRef = collection(db, "card_types")
-    // const cardsCollectionRef = collection(db, "cards")
-    // const decksCollectionRef = collection(db, "decks")
+    const cardsCollectionRef = collection(db, "cards")
+    const decksCollectionRef = collection(db, "decks")
     const extra_effectsCollectionRef = collection(db, "extra_effects")
     const how_tosCollectionRef = collection(db, "how_tos")
     const reactionsCollectionRef = collection(db, "reactions")
     const termsCollectionRef = collection(db, "terms")
 
     const transferAll = async () => {
+        // console.log(cards[0])
+        // for (let card of cards) {
+        //     console.log(card.created_on)
+        //     if (card.created_on.full_time.$date) {
+        //         const newFullTime = card.created_on.full_time.$date.slice(0, 19)
+        //         card.created_on.full_time = newFullTime
+        //     } else {
+        //         const newFullTime = card.created_on.full_time.slice(0, 19)
+        //         card.created_on.full_time = newFullTime
+        //     }
+        //     if (card.updated_on.full_time.$date) {
+        //         const newFullTime = card["updated_on"]["full_time"]["$date"].slice(0, 19)
+        //         card["updated_on"]["full_time"] = newFullTime
+        //     } else {
+        //         const newFullTime = card["updated_on"]["full_time"].slice(0, 19)
+        //         card["updated_on"]["full_time"] = newFullTime
+        //     }
+        //     addDoc(cardsCollectionRef, card)
+        // }
+        // console.log(cards[0])
+
+        for (let deck of decks) {
+            console.log(deck.created_on)
+            if (deck.created_on.full_time.$date) {
+                const newFullTime = deck.created_on.full_time.$date.slice(0, 19)
+                deck.created_on.full_time = newFullTime
+            } else {
+                const newFullTime = deck.created_on.full_time.slice(0, 19)
+                deck.created_on.full_time = newFullTime
+            }
+            if (deck.updated_on.full_time.$date) {
+                const newFullTime = deck["updated_on"]["full_time"]["$date"].slice(0, 19)
+                deck["updated_on"]["full_time"] = newFullTime
+            } else {
+                const newFullTime = deck["updated_on"]["full_time"].slice(0, 19)
+                deck["updated_on"]["full_time"] = newFullTime
+            }
+            // addDoc(cardsCollectionRef, card)
+            addDoc(decksCollectionRef, deck)
+        }
+        // for (let article of articles) {
+        //     addDoc(articlesCollectionRef, article)
+        // }
         // for (let booster_set of booster_sets) {
-        //     addDoc(decksCollectionRef, card)
-        //     console.log(card.id)
+        //     addDoc(booster_setsCollectionRef, booster_set)
         // }
-        // for (let deck of decks) {
-        //     addDoc(decksCollectionRef, deck)
-        //     console.log(deck.id)
+        // for (let card_category of card_categories) {
+        //     addDoc(card_categoriesCollectionRef, card_category)
         // }
-        for (let article of articles) {
-            addDoc(articlesCollectionRef, article)
-        }
-        for (let booster_set of booster_sets) {
-            addDoc(booster_setsCollectionRef, booster_set)
-        }
-        for (let card_category of card_categories) {
-            addDoc(card_categoriesCollectionRef, card_category)
-        }
-        for (let card_tag of card_tags) {
-            addDoc(card_tagsCollectionRef, card_tag)
-        }
-        for (let card_type of card_types) {
-            addDoc(card_typesCollectionRef, card_type)
-        }
-        for (let extra_effect of extra_effects) {
-            addDoc(extra_effectsCollectionRef, extra_effect)
-        }
-        for (let how_to of howTos) {
-            addDoc(how_tosCollectionRef, how_to)
-        }
-        for (let reaction of reactions) {
-            addDoc(reactionsCollectionRef, reaction)
-        }
-        for (let term of terms) {
-            addDoc(termsCollectionRef, term)
-        }
+        // for (let card_tag of card_tags) {
+        //     addDoc(card_tagsCollectionRef, card_tag)
+        // }
+        // for (let card_type of card_types) {
+        //     addDoc(card_typesCollectionRef, card_type)
+        // }
+        // for (let extra_effect of extra_effects) {
+        //     addDoc(extra_effectsCollectionRef, extra_effect)
+        // }
+        // for (let how_to of howTos) {
+        //     addDoc(how_tosCollectionRef, how_to)
+        // }
+        // for (let reaction of reactions) {
+        //     addDoc(reactionsCollectionRef, reaction)
+        // }
+        // for (let term of terms) {
+        //     addDoc(termsCollectionRef, term)
+        // }
     }
 
 

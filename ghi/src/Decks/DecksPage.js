@@ -6,9 +6,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { DeckQueryContext } from "../Context/DeckQueryContext";
 import { AuthContext } from "../Context/AuthContext";
 import FavoriteDeck from "../Accounts/FavoriteDeck";
+import deckQueries from "../QueryObjects/DeckQueries";
+
 
 function DecksPage() {
-
     const [decks, setDecks] = useState([]);
 
     const [deckShowMore, setDeckShowMore] = useState(20);
@@ -25,10 +26,9 @@ function DecksPage() {
 
     const getDecks = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_decks/`);
-        const data = await response.json();
+        const data = await deckQueries.getdecksData();
 
-        const sortedDecks = [...data.decks].sort(deckSortMethods[deckSortState].method);
+        const sortedDecks = [...data].sort(deckSortMethods[deckSortState].method);
         setLoading(false)
         setDecks(sortedDecks.reverse());
     };
@@ -45,7 +45,7 @@ function DecksPage() {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getDecks();
-        document.title = "Decks - PM CardBase"
+        document.title = "Decks - PM Cadeckse"
         return () => {
             document.title = "PlayMaker CardBase"
         };
@@ -53,9 +53,9 @@ function DecksPage() {
     }, []);
 
     const deckSortMethods = {
-        none: { method: (a,b) => b.id.localeCompare(a.id) },
-        newest: { method: (a,b) => b.id.localeCompare(a.id) },
-        oldest: { method: (a,b) => a.id.localeCompare(b.id) },
+        none: { method: (a,b) => b.updated_on.full_time.localeCompare(a.updated_on.full_time) },
+        newest: { method: (a,b) => b.created_on.full_time.localeCompare(a.created_on.full_time) },
+        oldest: { method: (a,b) => a.created_on.full_time.localeCompare(b.created_on.full_time) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
         updated: { method: (a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time) },
     };
@@ -257,14 +257,14 @@ function DecksPage() {
                                         className="left justify-content-end"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {deck.time_ago.created} &nbsp; &nbsp;
+                                            {deck.created_on.ago} &nbsp; &nbsp;
                                         </h6>
                                         <img className="logo3" src="https://i.imgur.com/QLa1ciW.png" alt="updated on"/>
                                         <h6
                                         className="left justify-content-end"
                                             style={{margin: '5px 0px 5px 5px', fontWeight: "600", textAlign: "left"}}
                                         >
-                                            {deck.time_ago.updated} &nbsp; &nbsp;
+                                            {deck.updated_on.ago} &nbsp; &nbsp;
                                         </h6>
                                         <img className="logo2" src="https://i.imgur.com/eMGZ7ON.png" alt="created by"/>
                                         <h6

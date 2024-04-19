@@ -5,9 +5,12 @@ import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../Display/BackButton";
 import { AuthContext } from "../Context/AuthContext";
 import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
+import { db } from "../Firebase"
+import { getDocs, getDoc, doc, collection } from "firebase/firestore"
 
 
 function CardDetailPage() {
+    const cardsCollectionRef = collection(db, "cards")
 
     const {card_number} = useParams();
     const [card, setCard] = useState({
@@ -42,8 +45,20 @@ function CardDetailPage() {
     const { account } = useContext(AuthContext)
 
     const getCard = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/`);
-        const cardData = await response.json();
+        // const response = doc(db, "cards", card_number);
+        // const cardData = response.data
+
+        // console.log(typeof card_number)
+
+        const cardRef = doc(db, "cards", "1001");
+        console.log(cardRef)
+        // Fetch the document
+        const cardSnapshot = await getDoc(cardRef);
+
+        // Check if the document exists
+
+        const cardData = cardSnapshot.data();
+
 
         cardData["seriesNames"] = cardData.series_name.split("//")
         cardData["effectText"] = cardData.effect_text.split("//")
@@ -121,7 +136,7 @@ function CardDetailPage() {
         getCardTags();
         getCards();
         getCardCategories();
-    }, [card_number]);
+    }, []);
 
     useEffect(() => {
         document.title = `${card.name} - PM CardBase`

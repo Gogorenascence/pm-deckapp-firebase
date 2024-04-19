@@ -3,19 +3,16 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { QueryContext } from "../Context/QueryContext";
 import { AuthContext } from "../Context/AuthContext";
 import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
-import { db } from "../Firebase"
-import { getDocs, collection } from "firebase/firestore"
+import cardQueries from "../QueryObjects/CardQueries";
+import boosterSetQueries from "../QueryObjects/BoosterSetQueries";
 
 function CardsPage() {
-    const cardsCollectionRef = collection(db, "cards")
-
     const [cards, setCards] = useState([]);
     const [boosterSets, setBoosterSets] = useState([]);
 
     const getBoosterSets = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/`);
-        const data = await response.json();
-        setBoosterSets(data.booster_sets);
+        const data = await boosterSetQueries.getboosterSetsData()
+        setBoosterSets(data);
     };
 
     const handleBoosterSetChange = (event) => {
@@ -51,11 +48,7 @@ function CardsPage() {
     const [noCards, setNoCards] = useState(false);
 
     const getCards = async() =>{
-        const response = await getDocs(cardsCollectionRef);
-        const data = response.docs.map((doc) => ({
-            ...doc.data(),
-        }))
-        console.log(data[0].id)
+        const data = await cardQueries.getCardsData()
 
         if (data.length == 0 ) {
             setNoCards(true)
@@ -129,8 +122,8 @@ function CardsPage() {
 
     const sortMethods = {
         none: { method: (a,b) => new Date(b.updated_on.full_time) - new Date(a.updated_on.full_time) },
-        newest: { method: (a,b) => b.id.localeCompare(a.id) },
-        oldest: { method: (a,b) => a.id.localeCompare(b.id) },
+        newest: { method: (a,b) => b.created_on.full_time.localeCompare(a.created_on.full_time) },
+        oldest: { method: (a,b) => a.created_on.full_time.localeCompare(b.created_on.full_time) },
         name: { method: (a,b) => a.name.localeCompare(b.name) },
         card_number: { method: (a,b) => a.card_number - b.card_number },
         enthusiasm_highest: { method: (a,b) => b.enthusiasm - a.enthusiasm },
