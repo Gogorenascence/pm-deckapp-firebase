@@ -1502,4 +1502,116 @@
   "images": {},
   "news": true,
   "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "6625be5efd2728a6d6c70f7a"
+  },
+  "title": "Card changes 4/21 - 4/27",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-04-21",
+  "updated": null,
+  "section": "releases",
+  "content": "Changes in card effects:@@]]//\nReaping Dive!!]]//\nPrevious: <Trigger> If a card(s) is discarded from your hand or String, pull 1 Comeback and resolve this card's main effect.//\nNew: <Trigger> If a card(s) is discarded from your String, pull 1 Comeback and resolve this card's main effect.//\nChanges in wording:@@]]//\nBerserk Transformation!]]//\nPrevious: <Trigger> If you take damage, resolve 1 other random card in your String. If the resolved card targets a foe(s), the target is now 1 random foe.//\nNew: <Trigger> If you take damage, resolve the main effect of 1 other random card in your String. If the resolved card targets a foe(s), the target is now 1 random foe.//\nReturning Souls]]//\nPrevious: <Critical> Discard 1 unresolved card from your String; add 1 Aura or Move from the discard pile to your String.//\nNew: <Critical> Discard 1 unturned card from your String; add 1 Aura or Move from the discard pile to your String.//\nDistant Drop-Off!!!]]//\nPrevious: <12+> Deal 3 damage. They discard 1 unresolved non-Fighter card from their String.//\nNew: <12+> Deal 3 damage. They discard 1 unturned non-Fighter card from their String.//\nStar Map]]//\nPrevious: Discard 3 unresolved Cosmic/Mystic cards in your String; damage dealt by 1 Cosmic or Mystic Move in your String is treated as bypassing damage this turn.//\nNew: Discard 3 unturned Cosmic/Mystic cards in your String; damage dealt by 1 Cosmic or Mystic Move in your String is treated as bypassing damage this turn.//\nShinobi Scroll of Duplication]]//\nPrevious: <L. Trigger> During the Start Phase or during a foe's turn, discard 1 unresolved card; this Item copies the main effect text of 1 Fighter or Aura in your String until the end of the round.//\nNew: <L. Trigger> During the Start Phase or during a foe's turn, discard 1 unturned card; this Item copies the main effect text of 1 Fighter or Aura in your String until the end of the round.//\nGrimmer Form]]//\nPrevious: <4+> Discard 1 unresolved card from your String; you are unaffected by the effect(s) of the card targeting you.//\nNew: <4+> Discard 1 unturned card from your String; you are unaffected by the effect(s) of the card targeting you.//\n\"Change of Plans!\"]]//\nPrevious: <Trigger> During a foe's turn; switch 1 unresolved card in your String with 1 card in your hand of the same type (the new card can not be used to defend).//\nNew: <Trigger> During a foe's turn; switch 1 unturned card in your String with 1 card in your hand of the same type (the new card can not be used to defend).//\nShinobi Art of Substitution!]]//\nPrevious: Discard 1 unresolved card in your String; add 1 card of the same type from your hand to your String and place original card's damage tokens on the added card.//\nNew: Discard 1 unresolved card in your String; add 1 card of the same type from your hand to your String and place original card's damage tokens on the added card.//",
+  "images": {
+    "1": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p3cpm.jpg",
+        "caption": null,
+        "link": "https://www.jothplaymaker.com/cards/1059",
+        "order": 1,
+        "alt_text": "Reaping Dive!!"
+      }
+    ],
+    "5": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1r1bma.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Berserk Transformation!"
+      }
+    ],
+    "8": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1cb15cp.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Returning Souls"
+      }
+    ],
+    "11": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p2pe.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Distant Drop-Off!!!"
+      }
+    ],
+    "14": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1plg15i.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Star Map"
+      }
+    ],
+    "17": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1pl20fi.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Shinobi Scroll of Duplication"
+      }
+    ],
+    "20": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1pl15cpe.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Grimmer Form"
+      }
+    ],
+    "23": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1cb18g.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "\"Change of Plans!\""
+      }
+    ],
+    "26": [
+      {
+        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p5fa.jpg",
+        "caption": null,
+        "link": null,
+        "order": 1,
+        "alt_text": "Shinobi Art of Substitution!"
+      }
+    ]
+  },
+  "news": true,
+  "site_link": ""
+},
+{
+  "_id": {
+    "$oid": "6625c232fd2728a6d6c70f7b"
+  },
+  "title": "Turned Mechanic introduced",
+  "subtitle": "",
+  "author": "TeamPlayMaker",
+  "story_date": "2024-04-21",
+  "updated": null,
+  "section": "game",
+  "content": "Turning cards has been introduced as new mechanic.//\nTo indicated that a card has resolved its main effect, card is turned horizontally.// \nAll text instances of \"unresolved card(s)\" will be replaced with \"unturned card(s)\".",
+  "images": {},
+  "news": true,
+  "site_link": ""
 }]

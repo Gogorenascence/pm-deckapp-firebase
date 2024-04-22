@@ -73,8 +73,8 @@
     "$oid": "6613054bc285d86b6c953a34"
   },
   "title": "Card Resolution",
-  "updated": "2024-04-08",
-  "content": "During their turn, players can resolve the main effect of cards in their String or Reserve.//\nWhen resolving an effect, the player must first declare their target.//\nCard effects can only be resolved once while the card is face up.//\nThe effects of a resolved card or Pluck stay active as long as the it is the String or Active Pluck, respectively.//\nResolving Cards in a String]]@@//\nWhen resolving the main effect of a card, the player reveals the card if it was not already face up and follows the instructions written on the card.//\nThe resolution of each card is optional.//\nResolution Windows]]//\nCards in a String are resolved in order of their card types: all Fighters first, then all Auras, then all Moves and all Endings last.//\nEach card type has its own \"resolution window\" where all cards of that type must be resolved.//\nThe moment the player moves to the next resolution window, cards currently in the String of the previous types can no longer be resolved.// \nNew Cards and Missed Resolution Windows]]//\nIf a new card is added to the String outside of its type's resolution window, it can still be resolved, but it must must be the next card to be resolved.//\nEx. If a player adds a Fighter and Aura to their play, after resolving their Move. If the player wants to resolve either of the new cards, it will be before the Ending. Additionally, it will be the Fighter first, then the Aura.//  \nTargeting]]//\nIf multiple cards or players fit the criteria for your resolving card, you choose the target.//\nIf there are no applicable targets at the time of an effect’s resolution, the effect will not occur, but the effect will still count as being resolved.//\nFocus]]//\nSome cards require a dice roll to determine which effect is resolve; the dice result is called Focus.//\nWhen determining Focus, all cards in the String are reveal, then roll a number of dice equal to the number of matching classes in the String.//\nResolving Pluck]]@@//\nWhen resolving the main effect of Pluck, the player must place it in an open Active Pluck Slot; if none are available, it can not be resolved.//\nEffect costs@@]]//\nCosts are actions that must be performed in order to resolve an effect; costs are not a part of the effect.//\nCosts are noted by bold text followed by a semicolon.// \nEnd Phase Maintenance@@]]//\nDuring the End Phase, all cards or Pluck that resolved main effect are sent to the discard pile.//\nUnresolved Cards@@]]//\nText that mentions \"Unresolved cards\" refers only to cards that have resolved their main effect.",
+  "updated": "2024-04-21",
+  "content": "During their turn, players can resolve the main effect of cards in their String or Reserve.//\nWhen resolving an effect, the player must first declare their target.//\nCard effects can only be resolved once while the card is face up.//\nThe effects of a resolved card or Pluck stay active as long as the it is the String or Active Pluck, respectively.//\nResolving Cards in a String]]@@//\nWhen resolving the main effect of a card, the player reveals the card if it was not already face up and follows the instructions written on the card.// \nThe card is then turned horizontally.//\nThe resolution of each card is optional.//\nResolution Windows]]//\nCards in a String are resolved in order of their card types: all Fighters first, then all Auras, then all Moves and all Endings last.//\nEach card type has its own \"resolution window\" where all cards of that type must be resolved.//\nThe moment the player moves to the next resolution window, cards currently in the String of the previous types can no longer be resolved.// \nNew Cards and Missed Resolution Windows]]//\nIf a new card is added to the String outside of its type's resolution window, it can still be resolved, but it must must be the next card to be resolved.//\nEx. If a player adds a Fighter and Aura to their play, after resolving their Move. If the player wants to resolve either of the new cards, it will be before the Ending. Additionally, it will be the Fighter first, then the Aura.//  \nTargeting]]//\nIf multiple cards or players fit the criteria for your resolving card, you choose the target.//\nIf there are no applicable targets at the time of an effect’s resolution, the effect will not occur, but the effect will still count as being resolved.//\nFocus]]//\nSome cards require a dice roll to determine which effect is resolve; the dice result is called Focus.//\nWhen determining Focus, all cards in the String are reveal, then roll a number of dice equal to the number of matching classes in the String.//\nResolving Pluck]]@@//\nWhen resolving the main effect of Pluck, the player must place it in an open Active Pluck Slot; if none are available, it can not be resolved.//\nEffect costs@@]]//\nCosts are actions that must be performed in order to resolve an effect; costs are not a part of the effect.//\nCosts are noted by bold text followed by a semicolon.// \nEnd Phase Maintenance@@]]//\nDuring the End Phase, all turned cards or Pluck are sent to the discard pile.//",
   "game_format": "Standard",
   "skill_level": "beginner",
   "how_to_number": 6,
@@ -90,115 +90,5 @@
   "game_format": "Standard",
   "skill_level": "beginner",
   "how_to_number": 17,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "66195cebc7083c3f3a53f366"
-  },
-  "title": "Pluck and the Pluck Deck",
-  "updated": null,
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 2.6,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "66195d02c7083c3f3a53f367"
-  },
-  "title": "Cards and the Main Deck",
-  "updated": "2024-04-13",
-  "content": "test//\ntest2//",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 2.3,
-  "images": {
-    "0": [
-      {
-        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1b1dweanat2.png",
-        "caption": "",
-        "link": null,
-        "order": 0,
-        "alt_text": "Dive Bomb Finisher!!!"
-      },
-      {
-        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1g4fbfanat2.png",
-        "caption": "This is a card image",
-        "link": null,
-        "order": 1,
-        "alt_text": "Flamebell"
-      }
-    ],
-    "1": [
-      {
-        "src": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1b1dweanat2.png",
-        "caption": "Endings have Enthusiasm in the top right corner",
-        "link": null,
-        "order": 0,
-        "alt_text": "PantheraMan"
-      }
-    ]
-  }
-},
-{
-  "_id": {
-    "$oid": "66195d3fc7083c3f3a53f368"
-  },
-  "title": "The Play Area",
-  "updated": null,
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 2.9,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "66195da5c7083c3f3a53f369"
-  },
-  "title": "The Start of A New Game",
-  "updated": null,
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 3.4,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "66195db9c7083c3f3a53f36a"
-  },
-  "title": "The Planning Phase",
-  "updated": "2024-04-12",
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 3.5,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "66196114c7083c3f3a53f36b"
-  },
-  "title": "End Phase and End Phase Maintenance",
-  "updated": null,
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 18,
-  "images": {}
-},
-{
-  "_id": {
-    "$oid": "661961a3c7083c3f3a53f36c"
-  },
-  "title": "Defeat and Second Wind",
-  "updated": null,
-  "content": "",
-  "game_format": "Standard",
-  "skill_level": "beginner",
-  "how_to_number": 20,
   "images": {}
 }]

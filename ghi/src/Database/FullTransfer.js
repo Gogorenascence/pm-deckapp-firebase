@@ -97,48 +97,48 @@ function FullTransfer() {
 
     const transferAll = async () => {
         // console.log(cards[0])
-        // for (let card of cards) {
-        //     console.log(card.created_on)
-        //     if (card.created_on.full_time.$date) {
-        //         const newFullTime = card.created_on.full_time.$date.slice(0, 19)
-        //         card.created_on.full_time = newFullTime
-        //     } else {
-        //         const newFullTime = card.created_on.full_time.slice(0, 19)
-        //         card.created_on.full_time = newFullTime
-        //     }
-        //     if (card.updated_on.full_time.$date) {
-        //         const newFullTime = card["updated_on"]["full_time"]["$date"].slice(0, 19)
-        //         card["updated_on"]["full_time"] = newFullTime
-        //     } else {
-        //         const newFullTime = card["updated_on"]["full_time"].slice(0, 19)
-        //         card["updated_on"]["full_time"] = newFullTime
-        //     }
-        //     addDoc(cardsCollectionRef, card)
-        // }
+        for (let card of cards) {
+            console.log(card.created_on)
+            if (card.created_on.full_time.$date) {
+                const newFullTime = card.created_on.full_time.$date.slice(0, 19)
+                card.created_on.full_time = newFullTime
+            } else {
+                const newFullTime = card.created_on.full_time.slice(0, 19)
+                card.created_on.full_time = newFullTime
+            }
+            if (card.updated_on.full_time.$date) {
+                const newFullTime = card["updated_on"]["full_time"]["$date"].slice(0, 19)
+                card["updated_on"]["full_time"] = newFullTime
+            } else {
+                const newFullTime = card["updated_on"]["full_time"].slice(0, 19)
+                card["updated_on"]["full_time"] = newFullTime
+            }
+            addDoc(cardsCollectionRef, card)
+        }
         // console.log(cards[0])
 
-        for (let deck of decks) {
-            console.log(deck.created_on)
-            if (deck.created_on.full_time.$date) {
-                const newFullTime = deck.created_on.full_time.$date.slice(0, 19)
-                deck.created_on.full_time = newFullTime
-            } else {
-                const newFullTime = deck.created_on.full_time.slice(0, 19)
-                deck.created_on.full_time = newFullTime
-            }
-            if (deck.updated_on.full_time.$date) {
-                const newFullTime = deck["updated_on"]["full_time"]["$date"].slice(0, 19)
-                deck["updated_on"]["full_time"] = newFullTime
-            } else {
-                const newFullTime = deck["updated_on"]["full_time"].slice(0, 19)
-                deck["updated_on"]["full_time"] = newFullTime
-            }
-            // addDoc(cardsCollectionRef, card)
-            addDoc(decksCollectionRef, deck)
-        }
-        // for (let article of articles) {
-        //     addDoc(articlesCollectionRef, article)
+        // for (let deck of decks) {
+        //     console.log(deck.created_on)
+        //     if (deck.created_on.full_time.$date) {
+        //         const newFullTime = deck.created_on.full_time.$date.slice(0, 19)
+        //         deck.created_on.full_time = newFullTime
+        //     } else {
+        //         const newFullTime = deck.created_on.full_time.slice(0, 19)
+        //         deck.created_on.full_time = newFullTime
+        //     }
+        //     if (deck.updated_on.full_time.$date) {
+        //         const newFullTime = deck["updated_on"]["full_time"]["$date"].slice(0, 19)
+        //         deck["updated_on"]["full_time"] = newFullTime
+        //     } else {
+        //         const newFullTime = deck["updated_on"]["full_time"].slice(0, 19)
+        //         deck["updated_on"]["full_time"] = newFullTime
+        //     }
+        //     // addDoc(cardsCollectionRef, card)
+        //     addDoc(decksCollectionRef, deck)
         // }
+        for (let article of articles) {
+            addDoc(articlesCollectionRef, article)
+        }
         // for (let booster_set of booster_sets) {
         //     addDoc(booster_setsCollectionRef, booster_set)
         // }
@@ -154,9 +154,9 @@ function FullTransfer() {
         // for (let extra_effect of extra_effects) {
         //     addDoc(extra_effectsCollectionRef, extra_effect)
         // }
-        // for (let how_to of howTos) {
-        //     addDoc(how_tosCollectionRef, how_to)
-        // }
+        for (let how_to of howTos) {
+            addDoc(how_tosCollectionRef, how_to)
+        }
         // for (let reaction of reactions) {
         //     addDoc(reactionsCollectionRef, reaction)
         // }

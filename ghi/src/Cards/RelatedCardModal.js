@@ -1,9 +1,12 @@
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { AppContext } from '../Context/AppContext';
+import cardQueries from '../QueryObjects/CardQueries';
 
 
-function RelatedCardModal() {
+function RelatedCardModal({
+    relatedCards
+}) {
 
     const {card_number} = useParams();
     const {isDark} = useContext(AppContext)
@@ -23,19 +26,18 @@ function RelatedCardModal() {
         document.body.style.overflow = 'hidden';
     };
 
-    const [relatedCards, setRelatedCards] = useState([]);
+    // const [relatedCards, setRelatedCards] = useState([]);
 
-    const getRelatedCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/related_cards/`);
-        const relatedData = await response.json();
+    // const getRelatedCards = async() =>{
+    //     const relatedData = await cardQueries.getRelatedCardData()
 
-        setRelatedCards(relatedData.cards.sort((a,b) => a.card_number - b.card_number));
-    };
+    //     setRelatedCards(relatedData);
+    // };
 
-    useEffect(() => {
-        getRelatedCards();
-    // eslint-disable-next-line
-    }, [card_number]);
+    // useEffect(() => {
+    //     getRelatedCards();
+    // // eslint-disable-next-line
+    // }, [card_number]);
 
 
     const selectCard = async(card) =>{
@@ -74,7 +76,7 @@ function RelatedCardModal() {
                         <h1 className="centered-h1">Related Cards</h1>
                         <div>
                             <div className="cd-inner2 card-pool-fill">
-                                {relatedCards.map((relatedCard) => {
+                                {relatedCards?.map((relatedCard) => {
                                     return (
                                             <img
                                                 className="cd-related-modal-card pointer"

@@ -8,7 +8,6 @@ const articleQueries = {
         const data = response.docs.map((doc) => ({
             ...doc.data(),
         }))
-        console.log(data)
         return data
     }
 }

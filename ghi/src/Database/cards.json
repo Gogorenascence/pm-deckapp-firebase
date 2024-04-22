@@ -2469,7 +2469,7 @@
   "card_number": 1059,
   "enthusiasm": 0,
   "effect_text": "Take 2 damage, then resolve the Critical effect of 1 Comeback in your Reserve.",
-  "second_effect_text": "<Trigger> If a card(s) is discarded from your hand or String, pull 1 Comeback and resolve this card's main effect.",
+  "second_effect_text": "<Trigger> If a card(s) is discarded from your String, pull 1 Comeback and resolve this card's main effect.",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p3cpm.jpg",
   "file_name": "i1p3cpm",
@@ -2493,11 +2493,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 29,
-    "time": "02:54",
+    "month": 4,
+    "day": 22,
+    "time": "01:10",
     "full_time": {
-      "$date": "2024-01-29T02:54:59.390Z"
+      "$date": "2024-04-22T01:10:23.157Z"
     }
   },
   "alpha": null,
@@ -2647,7 +2647,7 @@
   "series_name": "Warp Family//Cosmic//Psychic//Tactical",
   "card_number": 1056,
   "enthusiasm": 16,
-  "effect_text": "<Target> Random foe.//If your String has a Unity card(s), Focus plus 3.//<1-5> Deal 3 damage.//<6-11> Deal 3 damage. Discard 1 card from their hand.//<12+> Deal 3 damage. They discard 1 unresolved non-Fighter card from their String.",
+  "effect_text": "<Target> Random foe.//If your String has a Unity card(s), Focus plus 3.//<1-5> Deal 3 damage.//<6-11> Deal 3 damage. Discard 1 card from their hand.//<12+> Deal 3 damage. They discard 1 unturned non-Fighter card from their String.",
   "second_effect_text": "",
   "illustrator": "Undeadsushii",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p2pe.jpg",
@@ -2670,11 +2670,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 2,
-    "day": 27,
-    "time": "16:04",
+    "month": 4,
+    "day": 22,
+    "time": "01:14",
     "full_time": {
-      "$date": "2024-02-27T16:04:06.748Z"
+      "$date": "2024-04-22T01:14:53.316Z"
     }
   },
   "alpha": null,
@@ -3041,7 +3041,7 @@
   "series_name": "Ceifeira Preta//Mystic//Quest//Transformation",
   "card_number": 1110,
   "enthusiasm": 0,
-  "effect_text": "<Trigger> If you are targeted for damage, apply each of the following effects for each Comeback in your Reserve://<1> Your Fighter is treated as Canny.//<2> Discard 1 card in your strongest or weakest foe's hand.//<3> Your Aura, Move and Ending gain damage plus 1.//<4+> Discard 1 unresolved card from your String; you are unaffected by the effect(s) of the card targeting you.",
+  "effect_text": "<Trigger> If you are targeted for damage, apply each of the following effects for each Comeback in your Reserve://<1> Your Fighter is treated as Canny.//<2> Discard 1 card in your strongest or weakest foe's hand.//<3> Your Aura, Move and Ending gain damage plus 1.//<4+> Discard 1 unturned card from your String; you are unaffected by the effect(s) of the card targeting you.",
   "second_effect_text": "",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1pl15cpe.jpg",
@@ -3065,11 +3065,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:27",
+    "month": 4,
+    "day": 22,
+    "time": "01:19",
     "full_time": {
-      "$date": "2024-01-18T00:27:50.148Z"
+      "$date": "2024-04-22T01:19:55.315Z"
     }
   },
   "alpha": null,
@@ -3261,7 +3261,7 @@
   "series_name": "Cosmic//Support//Transformation//Call",
   "card_number": 1126,
   "enthusiasm": 0,
-  "effect_text": "<Trigger> During a foe's turn; switch 1 unresolved card in your String with 1 card in your hand of the same type (the new card can not be used to defend).",
+  "effect_text": "<Trigger> During a foe's turn; switch 1 unturned card in your String with 1 card in your hand of the same type (the new card can not be used to defend).",
   "second_effect_text": "<Critical> Discard 1 card from your hand; pull 1 Support or Transformation card/Pluck.",
   "illustrator": "mvthwus",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1cb18g.jpg",
@@ -3286,11 +3286,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:09",
+    "month": 4,
+    "day": 22,
+    "time": "01:21",
     "full_time": {
-      "$date": "2024-01-18T00:09:36.570Z"
+      "$date": "2024-04-22T01:21:19.735Z"
     }
   },
   "alpha": null,
@@ -3481,7 +3481,7 @@
   "card_number": 1111,
   "enthusiasm": 0,
   "effect_text": "Add 2 Comebacks from the discard pile to your Reserve. You can not resolve them this round. ",
-  "second_effect_text": "<Critical> Discard 1 unresolved card from your String; add 1 Aura or Move from the discard pile to your String.",
+  "second_effect_text": "<Critical> Discard 1 unturned card from your String; add 1 Aura or Move from the discard pile to your String.",
   "illustrator": "Hugo Roberto",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1cb15cp.jpg",
   "file_name": "i1cb15cp",
@@ -3504,11 +3504,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 18,
-    "time": "00:09",
+    "month": 4,
+    "day": 22,
+    "time": "01:09",
     "full_time": {
-      "$date": "2024-01-18T00:09:21.901Z"
+      "$date": "2024-04-22T01:09:53.857Z"
     }
   },
   "alpha": null,
@@ -4103,7 +4103,7 @@
   "card_number": 1018,
   "enthusiasm": 0,
   "effect_text": "The next resolved card in your String gains damage plus 1 (that card deals 1 additional damage at the end of its resolution).   ",
-  "second_effect_text": "<Trigger> If you take damage, resolve 1 other random card in your String. If the resolved card targets a foe(s), the target is now 1 random foe.",
+  "second_effect_text": "<Trigger> If you take damage, resolve the main effect of 1 other random card in your String. If the resolved card targets a foe(s), the target is now 1 random foe.",
   "illustrator": "Znttus",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1r1bma.jpg",
   "file_name": "i1r1bma",
@@ -4127,11 +4127,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 1,
-    "day": 29,
-    "time": "01:53",
+    "month": 4,
+    "day": 22,
+    "time": "01:00",
     "full_time": {
-      "$date": "2024-01-29T01:53:38.512Z"
+      "$date": "2024-04-22T01:00:46.799Z"
     }
   },
   "alpha": null,
@@ -5858,7 +5858,7 @@
   "series_name": "Cosmic//Mystic//Fortune",
   "card_number": 1130,
   "enthusiasm": null,
-  "effect_text": "Discard 3 unresolved Cosmic/Mystic cards in your String; damage dealt by 1 Cosmic or Mystic Move in your String is treated as bypassing damage this turn.",
+  "effect_text": "Discard 3 unturned Cosmic/Mystic cards in your String; damage dealt by 1 Cosmic or Mystic Move in your String is treated as bypassing damage this turn.",
   "second_effect_text": "<Trigger> During the Start Phase, if your hand/String has 7 or more Cosmic/Mystic cards, return this Item to your Active Pluck. ",
   "illustrator": "TBD",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1plg15i.jpg",
@@ -5883,11 +5883,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 3,
-    "day": 29,
-    "time": "19:08",
+    "month": 4,
+    "day": 22,
+    "time": "01:15",
     "full_time": {
-      "$date": "2024-03-29T19:08:12.476Z"
+      "$date": "2024-04-22T01:15:03.804Z"
     }
   },
   "alpha": null,
@@ -6528,7 +6528,7 @@
   "series_name": "Fog Palace//Magic//Tactical//Transformation",
   "card_number": 1154,
   "enthusiasm": null,
-  "effect_text": "Discard 1 unresolved card in your String; add 1 card of the same type from your hand to your String and place original card's damage tokens on the added card. ",
+  "effect_text": "Discard 1 unturned card in your String; add 1 card of the same type from your hand to your String and place original card's damage tokens on the added card. ",
   "second_effect_text": "<Trigger> If you are targeted by a foe's card, resolve this card's main effect and you are unaffected by all non-damaging effects of cards targeting you this turn.",
   "illustrator": "Ham West",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1p5fa.jpg",
@@ -6553,11 +6553,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 2,
-    "day": 19,
-    "time": "06:05",
+    "month": 4,
+    "day": 22,
+    "time": "01:23",
     "full_time": {
-      "$date": "2024-02-19T06:05:54.921Z"
+      "$date": "2024-04-22T01:23:39.003Z"
     }
   },
   "alpha": null,
@@ -6753,7 +6753,7 @@
   "series_name": "Fog Palace//Magic//Tactical",
   "card_number": 1166,
   "enthusiasm": null,
-  "effect_text": "<L. Trigger> During the Start Phase or during a foe's turn, discard 1 unresolved card; this Item copies the main effect text of 1 Fighter or Aura in your String until the end of the round.",
+  "effect_text": "<L. Trigger> During the Start Phase or during a foe's turn, discard 1 unturned card; this Item copies the main effect text of 1 Fighter or Aura in your String until the end of the round.",
   "second_effect_text": "",
   "illustrator": "Ham West",
   "picture_url": "https://compressedplaymakercards.s3.us-west-1.amazonaws.com/i1pl20fi.jpg",
@@ -6778,11 +6778,11 @@
   },
   "updated_on": {
     "year": 2024,
-    "month": 3,
-    "day": 11,
-    "time": "14:29",
+    "month": 4,
+    "day": 22,
+    "time": "01:15",
     "full_time": {
-      "$date": "2024-03-11T14:29:37.914Z"
+      "$date": "2024-04-22T01:15:55.366Z"
     }
   },
   "alpha": null,

@@ -4,14 +4,10 @@ import CardEditModal from "./CardEditModal";
 import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../Display/BackButton";
 import { AuthContext } from "../Context/AuthContext";
-import ImageWithoutRightClick from "../Display/ImageWithoutRightClick";
-import { db } from "../Firebase"
-import { getDocs, getDoc, doc, collection } from "firebase/firestore"
+import cardQueries from "../QueryObjects/CardQueries";
 
 
 function CardDetailPage() {
-    const cardsCollectionRef = collection(db, "cards")
-
     const {card_number} = useParams();
     const [card, setCard] = useState({
         name: "",
@@ -45,20 +41,7 @@ function CardDetailPage() {
     const { account } = useContext(AuthContext)
 
     const getCard = async() =>{
-        // const response = doc(db, "cards", card_number);
-        // const cardData = response.data
-
-        // console.log(typeof card_number)
-
-        const cardRef = doc(db, "cards", "1001");
-        console.log(cardRef)
-        // Fetch the document
-        const cardSnapshot = await getDoc(cardRef);
-
-        // Check if the document exists
-
-        const cardData = cardSnapshot.data();
-
+        const cardData = await cardQueries.getCardData(card_number)
 
         cardData["seriesNames"] = cardData.series_name.split("//")
         cardData["effectText"] = cardData.effect_text.split("//")
@@ -66,13 +49,9 @@ function CardDetailPage() {
             cardData["secondEffectText"] = cardData.second_effect_text.split("//")
         }
         setCard(cardData);
-    };
 
-    const getRelatedCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/related_cards/`);
-        const relatedData = await response.json();
-
-        setRelatedCards(relatedData.cards.sort((a,b) => a.card_number - b.card_number));
+        const relatedData = await cardQueries.getRelatedCardData(cardData.hero_id, cardData.card_number)
+        setRelatedCards(relatedData);
     };
 
     const getCardType = async() =>{
@@ -129,14 +108,13 @@ function CardDetailPage() {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getCard();
-        getRelatedCards();
         getCardType();
         getExtraEffects();
         getReactions();
         getCardTags();
         getCards();
         getCardCategories();
-    }, []);
+    }, [card_number]);
 
     useEffect(() => {
         document.title = `${card.name} - PM CardBase`
@@ -197,7 +175,9 @@ function CardDetailPage() {
                                 Random Card
                             </button>
                             {relatedCards.length > 6?
-                                <RelatedCardModal/>: null
+                                <RelatedCardModal
+                                    relatedCards={relatedCards}
+                                />: null
                             }
                             { account && account.roles.includes("admin")?
                                 null:
@@ -374,7 +354,9 @@ function CardDetailPage() {
                                         Random Card
                                     </button>
                                     {relatedCards.length > 6?
-                                        <RelatedCardModal/>: null
+                                        <RelatedCardModal
+                                            relatedCards={relatedCards}
+                                        />: null
                                     }
 
                                 </div>
