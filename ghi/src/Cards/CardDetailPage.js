@@ -6,6 +6,10 @@ import BackButton from "../Display/BackButton";
 import { AuthContext } from "../Context/AuthContext";
 import cardQueries from "../QueryObjects/CardQueries";
 import cardCategoryQueries from "../QueryObjects/CardCategoryQueries";
+import cardTagQueries from "../QueryObjects/CardTagQueries"
+import extraEffectQueries from "../QueryObjects/ExtraEffectQueries"
+import cardTypeQueries from "../QueryObjects/CardTypeQueries"
+import reactionQueries from "../QueryObjects/ReactionQueries"
 
 
 function CardDetailPage() {
@@ -34,11 +38,15 @@ function CardDetailPage() {
     const [card_categories, setCardCategories] = useState([])
 
     const [cards, setCards] = useState([]);
+    const [cardType, setCardType] = useState([]);
+    const [cardTags, setCardTags] = useState([]);
+    const [extraEffects, setExtraEffects] = useState([]);
+    const [reactions, setReactions] = useState([]);
 
     const { account } = useContext(AuthContext)
 
     const getCard = async() =>{
-        const cardData = await cardQueries.getFullCardData(card_number)
+        const cardData = await cardQueries.getCardData(card_number)
 
         cardData["seriesNames"] = cardData.series_name.split("//")
         cardData["effectText"] = cardData.effect_text.split("//")
@@ -50,6 +58,22 @@ function CardDetailPage() {
 
         const relatedData = await cardQueries.getRelatedCardData(cardData.hero_id, cardData.card_number)
         setRelatedCards(relatedData);
+
+        const cardTypeData = await cardTypeQueries.getCardTypeDataFromCard(cardData.card_type);
+        console.log(cardTypeData)
+        setCardType(cardTypeData);
+
+        const cardTagData = await cardTagQueries.getCardTagDataFromCard(cardData.card_tags);
+        setCardTags(cardTagData);
+
+        const extraEffectData = await extraEffectQueries.getExtraEffectDataFromCard(cardData.extra_effects);
+        setExtraEffects(extraEffectData);
+
+        const reactionData = await reactionQueries.getReactionDataFromCard(cardData.reactions)
+        reactionData.map(reaction => reaction["rules"] = reaction["rules"].replace("{count}", reaction["count"].toString()))
+
+        setReactions(reactionData);
+
     };
 
     const getCards = async() =>{
@@ -155,13 +179,13 @@ function CardDetailPage() {
                             <div className="cd-info">
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Type</h4>
-                                    {card.card_type?
-                                        <NavLink to={`/cardtypes/${card.card_type.id}`} className="nav-link2 glow2">
-                                            <h5 title={card.card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
-                                                >{card.card_type.name} *</h5>
+                                    {cardType?
+                                        <NavLink to={`/cardtypes/${cardType[0]?.id}`} className="nav-link2 glow2">
+                                            <h5 title={cardType[0]?.rules} style={{fontWeight: "400", margin: "18px 12px"}}
+                                                >{cardType[0]?.name} *</h5>
                                         </NavLink>:
-                                        <h5 title={card.card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
-                                        >{card.card_type.name} *</h5>
+                                        <h5 title={cardType[0]?.rules} style={{fontWeight: "400", margin: "18px 12px"}}
+                                        >{cardType[0]?.name} *</h5>
                                     }
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
@@ -175,8 +199,8 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Reactions</h4>
-                                    {card.reactions.length ? (
-                                        card.reactions.map((reaction) => (
+                                    {reactions.length ? (
+                                        reactions.map((reaction) => (
                                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link2 glow2">
                                                 <h5 title={reaction?.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction?.name}>
                                                     {reaction?.name} {reaction?.count} *
@@ -193,9 +217,9 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Tags</h4>
-                                    {(card.card_tags[0]?.tag_number !== 1000)?
+                                    {(cardTags[0]?.tag_number !== 1000)?
                                         <>
-                                            {card.card_tags?.map((card_tag) => {
+                                            {cardTags?.map((card_tag) => {
                                                     return (
                                                         <NavLink to={`/cardtags/${card_tag.id}`} className="nav-link2 glow2">
                                                             <h5 title={card_tag.rules}
@@ -253,11 +277,11 @@ function CardDetailPage() {
                                                 style={{fontWeight: "600", margin: "18px 10px 18px 10px"}}>{card.second_effect_text}</h5> */}
                                         </div>
                                     )}
-                                    {card.extra_effects.length ? (
+                                    {extraEffects.length ? (
                                     <>
                                         <h4 style={{fontWeight: "600", margin: "12px"}}>Extra Effect Types</h4>
                                         <div className="borderBlack" style={{display:"flex"}}>
-                                            {card.extra_effects.map((extra_effect) => (
+                                            {extraEffects.map((extra_effect) => (
                                                 <NavLink to={`/extraeffects/${extra_effect.id}`} className="nav-link2 glow2">
                                                     <h5 title={extra_effect.rules}
                                                         style={{fontWeight: "400",
