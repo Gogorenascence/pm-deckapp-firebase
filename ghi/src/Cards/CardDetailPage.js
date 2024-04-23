@@ -178,8 +178,8 @@ function CardDetailPage() {
                                     {card.reactions.length ? (
                                         card.reactions.map((reaction) => (
                                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link2 glow2">
-                                                <h5 title={reaction.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction.name}>
-                                                    {reaction.name} {reaction.count} *
+                                                <h5 title={reaction?.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction?.name}>
+                                                    {reaction?.name} {reaction?.count} *
                                                 </h5>
                                             </NavLink>
                                         ))

@@ -14,20 +14,6 @@ class CardCategoryQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "card_categories"
 
-    def get_all_card_categories(self) -> CardCategoriesAll:
-        db = self.collection.find()
-        card_categories = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            card_categories.append(CardCategoryOut(**document))
-        return card_categories
-
-    def get_card_category(self, id) -> CardCategoryOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return CardCategoryOut(**props)
 
     def create_card_category(self, card_category: CardCategoryIn) -> CardCategory:
         props = card_category.dict()

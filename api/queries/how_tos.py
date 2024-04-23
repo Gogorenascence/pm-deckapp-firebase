@@ -12,13 +12,6 @@ class HowToQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "how_tos"
 
-    def get_all_how_tos(self) -> list[HowToOut]:
-        db = self.collection.find()
-        how_to = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            how_to.append(HowToOut(**document))
-        return how_to
 
     def get_how_to(self, id) -> HowToOut:
         props = self.collection.find_one({"_id": ObjectId(id)})

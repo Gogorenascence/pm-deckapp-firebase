@@ -8,6 +8,8 @@ import GameBoard from "./GameBoard";
 import PositionSlider from "./PositionSlider";
 import CardInfoPanel from "./CardInfoPanel";
 import LogChatPanel from "./LogChatPanel";
+import deckQueries from "../QueryObjects/DeckQueries";
+import { APIContext } from "../Context/APIContext";
 
 
 function SimulatorPage() {
@@ -33,7 +35,6 @@ function SimulatorPage() {
 
     const {
         decks,
-        cards,
         setDecks,
         setCards,
         hand,
@@ -102,21 +103,67 @@ function SimulatorPage() {
 
     const {account} = useContext(AuthContext)
 
+    const {
+        pre_processed_cards,
+        card_types,
+        card_tags,
+        extra_effects,
+        reactions
+    }  = useContext(APIContext)
+
     const getDecks = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/decks/`);
-        const data = await response.json();
-        setDecks(data.decks.sort((a,b) => a.name.localeCompare(b.name)));
+        const data = await deckQueries.getdecksData();
+        setDecks(data.sort((a,b) => a.name.localeCompare(b.name)));
         setLoading(false)
     };
 
-    const getCards = async() =>{
-        setCardsLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/full_cards/`);
-        const cardData = await response.json();
-        setCards(cardData.cards);
-        setCardsLoading(false)
-    };
+    const getCards = () => {
+        const processedCards = []
+        for (let card of pre_processed_cards) {
+            const cardData = {...card}
+            cardData["seriesNames"] = cardData.series_name.split("//")
+            cardData["effectText"] = cardData.effect_text.split("//")
+            if (cardData.second_effect_text){
+                cardData["secondEffectText"] = cardData.second_effect_text.split("//")
+            }
+            const card_type = card_types.find(card_type => card?.card_type[0] === card_type?.type_number)
+            cardData["card_type"] = [card_type]
+
+            const extra_effects_list = []
+            for (let extra_effect of extra_effects) {
+                if (card.extra_effects.includes(extra_effect.effect_number) ) {
+                    extra_effects_list.push(extra_effect)
+                }
+            }
+            cardData["extra_effects"] = extra_effects_list
+
+            const reaction_counts = {}
+            for (let reaction_number of card.reactions) {
+                const reaction = reactions.find(reaction => reaction.reaction_number === reaction_number)
+                !reaction_counts[reaction.name]?
+                reaction_counts[reaction.name] = {
+                    info: reaction,
+                    count: 1,
+
+                }:
+                reaction_counts[reaction.name]["count"]++
+            }
+            const reactions_list = Object.values(reaction_counts)
+            cardData["reactions"] = reactions_list
+
+            const card_tags_list = []
+            for (let card_tag of card_tags) {
+                if (card.card_tags.includes(card_tag.tag_number) ) {
+                    card_tags_list.push(card_tag)
+                }
+            }
+            cardData["card_tags"] = card_tags_list
+
+            processedCards.push(cardData)
+        }
+        setCards(processedCards)
+    }
 
     useEffect(() => {
         window.scroll(0, 0);
@@ -184,7 +231,6 @@ function SimulatorPage() {
                     <button className="end-button" onClick={checkPlayer}>Player Info</button>
                 </div>
                 <div className="deckSelect3">
-                    {cardsLoading && cards.length < 1? <p>Loading cards...</p>:null}
                     {loading && decks.length < 1? <p>Loading decks...</p>:null}
                 </div>
                 <div>

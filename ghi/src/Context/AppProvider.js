@@ -13,6 +13,7 @@ import { AppContextProvider } from "./AppContext.js";
 import { CardSetQueryContextProvider } from "./CardSetQueryContext.js";
 import { NewsQueryContextProvider } from "./NewsQueryContext.js";
 import { HowToQueryContextProvider } from "./HowToQueryContext.js";
+import { APIContext, APIContextProvider } from "./APIContext.js";
 
 
 const AppProvider = ({ children }) => {
@@ -31,7 +32,9 @@ const AppProvider = ({ children }) => {
                                                     <SimulatorActionsContextProvider>
                                                         <MainActionsContextProvider>
                                                             <PluckActionsContextProvider>
-                                                                {children}
+                                                                <APIContextProvider>
+                                                                    {children}
+                                                                </APIContextProvider>
                                                             </PluckActionsContextProvider>
                                                         </MainActionsContextProvider>
                                                     </SimulatorActionsContextProvider>

@@ -12,14 +12,6 @@ class TermQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "terms"
 
-    def get_all_terms(self) -> list[TermOut]:
-        db = self.collection.find()
-        terms = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            terms.append(TermOut(**document))
-        return terms
-
     def get_term(self, id: str) -> TermOut:
         props = self.collection.find_one({"_id": ObjectId(id)})
         if not props:

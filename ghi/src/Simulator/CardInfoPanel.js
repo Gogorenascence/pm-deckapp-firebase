@@ -16,6 +16,8 @@ function CardInfoPanel({
         return text.split("//")
     }
 
+    console.log(hoveredCard)
+
     return (
         <div className="flex">
         <div className={showPanel? "infoPanel" : "infoPanelClosed"}>
@@ -37,7 +39,7 @@ function CardInfoPanel({
                                     <p className="white panel-text-box-text">{hoveredCard.card_type[0].name}</p>
                                     {hoveredCard.reactions.length > 0?
                                         hoveredCard.reactions.map(reaction =>
-                                            <p className="white panel-text-box-text">&#11089;{reaction.name} {reaction.count}</p>
+                                            <p className="white panel-text-box-text">&#11089;{reaction.info.name} {reaction.count}</p>
                                         ):null
                                     }
                                     {hoveredCard.card_tags.length > 0 && hoveredCard.card_tags[0].tag_number !== 1000?

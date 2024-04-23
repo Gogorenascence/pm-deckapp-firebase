@@ -81,6 +81,30 @@ const cardQueries = {
             console.log("No matching documents.");
             return null;
         }
+    },
+    getAllFullCardsData: async function getAllFullCardsData() {
+        const cardsCollectionRef = collection(db, "cards")
+        const response = await getDocs(cardsCollectionRef);
+        const data = response.docs.map((doc) => ({
+            ...doc.data(),
+        }))
+        for (let card of data) {
+            console.log("dog")
+            const cardTypeData = await cardTypeQueries.getCardTypeDataFromCard(card.card_type)
+            card["card_type"] = cardTypeData[0]
+
+            const tagData = await cardTagQueries.getCardTagDataFromCard(card.card_tags)
+            card["card_tags"] = tagData
+
+            const extraEffectData = await extraEffectQueries.getExtraEffectDataFromCard(card.extra_effects)
+            card["extra_effects"] = extraEffectData
+
+            const reactionData = await reactionQueries.getReactionDataFromCard(card.reactions)
+            reactionData.map(reaction => reaction["rules"] = reaction["rules"].replace("{count}", reaction["count"].toString()))
+            card["reactions"] = reactionData
+        }
+        console.log(data)
+        return data
     }
 }
 

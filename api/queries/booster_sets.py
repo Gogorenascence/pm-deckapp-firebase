@@ -18,13 +18,6 @@ class BoosterSetQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "booster_sets"
 
-    def get_all_booster_sets(self) -> BoosterSetsAll:
-        db = self.collection.find()
-        booster_sets = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            booster_sets.append(BoosterSetOut(**document))
-        return booster_sets
 
     def get_booster_set(self, id) -> BoosterSetOut:
         props = self.collection.find_one({"_id": ObjectId(id)})

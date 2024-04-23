@@ -13,20 +13,6 @@ class ReactionQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "reactions"
 
-    def get_all_reactions(self) -> ReactionsAll:
-        db = self.collection.find()
-        reactions = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            reactions.append(ReactionOut(**document))
-        return reactions
-
-    def get_reaction(self, id) -> ReactionOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return ReactionOut(**props)
 
     def create_reaction(self, reaction: ReactionIn) -> Reaction:
         props = reaction.dict()

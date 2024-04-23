@@ -12,13 +12,6 @@ class ArticleQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "articles"
 
-    def get_all_articles(self) -> ArticlesAll:
-        db = self.collection.find()
-        articles = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            articles.append(ArticleOut(**document))
-        return articles
 
     def get_article(self, id) -> ArticleOut:
         props = self.collection.find_one({"_id": ObjectId(id)})

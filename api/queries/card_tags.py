@@ -13,20 +13,7 @@ class TagQueries(Queries):
     DB_NAME = "cards"
     COLLECTION = "card_tags"
 
-    def get_all_tags(self) -> TagsAll:
-        db = self.collection.find()
-        card_tags = []
-        for document in db:
-            document["id"] = str(document["_id"])
-            card_tags.append(TagOut(**document))
-        return card_tags
 
-    def get_tag(self, id) -> TagOut:
-        props = self.collection.find_one({"_id": ObjectId(id)})
-        if not props:
-            return None
-        props["id"] = str(props["_id"])
-        return TagOut(**props)
 
     def create_tag(self, card_tag: TagIn) -> CardTag:
         props = card_tag.dict()

@@ -39,8 +39,10 @@ const reactionQueries = {
         }
         for (let [reactionNumber, count] of Object.entries(reactionCounts)) {
             const reactionData = await reactionQueries.getReactionData(reactionNumber)
-            reactionData["count"] = count
-            reactions.push(reactionData)
+            if (reactionData) {
+                reactionData["count"] = count
+                reactions.push(reactionData)
+            }
         }
         return reactions
     }
