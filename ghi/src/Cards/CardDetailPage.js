@@ -5,6 +5,7 @@ import RelatedCardModal from "./RelatedCardModal";
 import BackButton from "../Display/BackButton";
 import { AuthContext } from "../Context/AuthContext";
 import cardQueries from "../QueryObjects/CardQueries";
+import cardCategoryQueries from "../QueryObjects/CardCategoryQueries";
 
 
 function CardDetailPage() {
@@ -30,10 +31,6 @@ function CardDetailPage() {
         card_tags: [],
     });
     const [relatedCards, setRelatedCards] = useState([]);
-    const [card_type, setCardType] = useState("")
-    const [extra_effects, setExtraEffects] = useState([])
-    const [reactions, setReactions] = useState([])
-    const [card_tags, setCardTags] = useState([])
     const [card_categories, setCardCategories] = useState([])
 
     const [cards, setCards] = useState([]);
@@ -41,7 +38,7 @@ function CardDetailPage() {
     const { account } = useContext(AuthContext)
 
     const getCard = async() =>{
-        const cardData = await cardQueries.getCardData(card_number)
+        const cardData = await cardQueries.getFullCardData(card_number)
 
         cardData["seriesNames"] = cardData.series_name.split("//")
         cardData["effectText"] = cardData.effect_text.split("//")
@@ -49,50 +46,20 @@ function CardDetailPage() {
             cardData["secondEffectText"] = cardData.second_effect_text.split("//")
         }
         setCard(cardData);
+        console.log(cardData)
 
         const relatedData = await cardQueries.getRelatedCardData(cardData.hero_id, cardData.card_number)
         setRelatedCards(relatedData);
     };
 
-    const getCardType = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/get_card_type/`);
-        const cardTypeData = await response.json();
-
-        setCardType(cardTypeData);
-    };
-
-    const getExtraEffects = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/get_extra_effects/`);
-        const extraEffectData = await response.json();
-
-        setExtraEffects(extraEffectData);
-    };
-
-    const getReactions = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/get_reactions/`);
-        const reactionData = await response.json();
-        reactionData.map(reaction => reaction["rules"] = reaction["rules"].replace("{count}", reaction["count"].toString()))
-        setReactions(reactionData);
-    };
-
-    const getCardTags = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/${card_number}/get_tags/`);
-        const cardTagData = await response.json();
-
-        setCardTags(cardTagData);
-    };
-
     const getCards = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const data = await response.json();
-
-        setCards(data.cards.reverse());
+        const data = await cardQueries.getCardsData();
+        setCards(data.reverse());
     };
 
     const getCardCategories = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/`);
-        const data = await response.json();
-        const sortedData = [...data.card_categories].sort((a,b) => a.name.localeCompare(b.name));
+        const data = await cardCategoryQueries.getCardCategoriesData();
+        const sortedData = [...data].sort((a,b) => a.name.localeCompare(b.name));
         setCardCategories(sortedData);
     };
 
@@ -108,10 +75,6 @@ function CardDetailPage() {
         window.scroll(0, 0);
         document.body.style.overflow = 'auto';
         getCard();
-        getCardType();
-        getExtraEffects();
-        getReactions();
-        getCardTags();
         getCards();
         getCardCategories();
     }, [card_number]);
@@ -131,11 +94,6 @@ function CardDetailPage() {
     const matchClass = (card_class) => {
         const cardCategory = card_categories?.find(category => category.name === card_class)
         return cardCategory?.id
-    }
-
-    const compressCard = (link) => {
-        return link.replace("https://playmakercards","https://compressedplaymakercards")
-            .replace("png", "jpg");
     }
 
     return (
@@ -197,13 +155,13 @@ function CardDetailPage() {
                             <div className="cd-info">
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Type</h4>
-                                    {card_type?
-                                        <NavLink to={`/cardtypes/${card_type.id}`} className="nav-link2 glow2">
-                                            <h5 title={card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
-                                                >{card_type.name} *</h5>
+                                    {card.card_type?
+                                        <NavLink to={`/cardtypes/${card.card_type.id}`} className="nav-link2 glow2">
+                                            <h5 title={card.card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
+                                                >{card.card_type.name} *</h5>
                                         </NavLink>:
-                                        <h5 title={card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
-                                        >{card_type.name} *</h5>
+                                        <h5 title={card.card_type.rules} style={{fontWeight: "400", margin: "18px 12px"}}
+                                        >{card.card_type.name} *</h5>
                                     }
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
@@ -217,8 +175,8 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Reactions</h4>
-                                    {reactions.length ? (
-                                        reactions.map((reaction) => (
+                                    {card.reactions.length ? (
+                                        card.reactions.map((reaction) => (
                                             <NavLink to={`/reactions/${reaction.id}`} className="nav-link2 glow2">
                                                 <h5 title={reaction.rules} style={{fontWeight: "400", margin: "18px 12px"}} key={reaction.name}>
                                                     {reaction.name} {reaction.count} *
@@ -235,9 +193,9 @@ function CardDetailPage() {
                                 </div>
                                 <div className={card.card_class ? card.card_class : "NoClass"}>
                                     <h4 style={{fontWeight: "600", margin: "10px 0px 0px 12px"}}>Tags</h4>
-                                    {card.card_tags[0] !== 1000?
+                                    {(card.card_tags[0]?.tag_number !== 1000)?
                                         <>
-                                            {card_tags?.map((card_tag) => {
+                                            {card.card_tags?.map((card_tag) => {
                                                     return (
                                                         <NavLink to={`/cardtags/${card_tag.id}`} className="nav-link2 glow2">
                                                             <h5 title={card_tag.rules}
@@ -295,11 +253,11 @@ function CardDetailPage() {
                                                 style={{fontWeight: "600", margin: "18px 10px 18px 10px"}}>{card.second_effect_text}</h5> */}
                                         </div>
                                     )}
-                                    {extra_effects.length ? (
+                                    {card.extra_effects.length ? (
                                     <>
                                         <h4 style={{fontWeight: "600", margin: "12px"}}>Extra Effect Types</h4>
                                         <div className="borderBlack" style={{display:"flex"}}>
-                                            {extra_effects.map((extra_effect) => (
+                                            {card.extra_effects.map((extra_effect) => (
                                                 <NavLink to={`/extraeffects/${extra_effect.id}`} className="nav-link2 glow2">
                                                     <h5 title={extra_effect.rules}
                                                         style={{fontWeight: "400",

@@ -1,14 +1,11 @@
 import { useParams, NavLink, useNavigate} from 'react-router-dom';
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { AppContext } from '../Context/AppContext';
-import cardQueries from '../QueryObjects/CardQueries';
 
 
 function RelatedCardModal({
     relatedCards
 }) {
-
-    const {card_number} = useParams();
     const {isDark} = useContext(AppContext)
     const navigate = useNavigate()
     const content = useRef(null)

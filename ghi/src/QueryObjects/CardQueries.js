@@ -1,5 +1,11 @@
 import { db } from "../Firebase"
 import { getDocs, collection, query, orderBy, where } from "firebase/firestore"
+import cardTagQueries from "./CardTagQueries"
+import extraEffectQueries from "./ExtraEffectQueries"
+import cardTypeQueries from "./CardTypeQueries"
+import reactionQueries from "./ReactionQueries"
+
+
 
 const cardQueries = {
     getCardsData: async function getCardsData() {
@@ -44,6 +50,36 @@ const cardQueries = {
             const relatedCards = []
             snapshot.forEach((card) => relatedCards.push(card.data()))
             return relatedCards;
+        }
+    },
+    getFullCardData: async function getFullCardData(cardNumber) {
+        const cardsCollectionRef = collection(db, "cards");
+        const int_card_number = parseInt(cardNumber, 10);
+        const cardQuery = query(
+            cardsCollectionRef,
+            where("card_number", "==", int_card_number)
+        )
+        const snapshot = await getDocs(cardQuery);
+        if (!snapshot.empty) {
+            const cardData = snapshot.docs[0].data();
+
+            const cardTypeData = await cardTypeQueries.getCardTypeDataFromCard(cardData.card_type)
+            cardData["card_type"] = cardTypeData[0]
+
+            const tagData = await cardTagQueries.getCardTagDataFromCard(cardData.card_tags)
+            cardData["card_tags"] = tagData
+
+            const extraEffectData = await extraEffectQueries.getExtraEffectDataFromCard(cardData.extra_effects)
+            cardData["extra_effects"] = extraEffectData
+
+            const reactionData = await reactionQueries.getReactionDataFromCard(cardData.reactions)
+            reactionData.map(reaction => reaction["rules"] = reaction["rules"].replace("{count}", reaction["count"].toString()))
+            cardData["reactions"] = reactionData
+
+            return cardData
+        } else {
+            console.log("No matching documents.");
+            return null;
         }
     }
 }

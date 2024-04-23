@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
+import cardCategoryQueries from "../../QueryObjects/CardCategoryQueries";
+import cardQueries from "../../QueryObjects/CardQueries";
 
 
 function CardCategoryDetail() {
@@ -29,14 +31,12 @@ function CardCategoryDetail() {
 
 
     const getCardCategory = async() =>{
-        const categoryResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_categories/${card_category_id}/`);
-        const category_data = await categoryResponse.json();
+        const category_data = await cardCategoryQueries.getCardCategoryData(card_category_id);
         setCardCategory(category_data);
 
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
+        const cardData = await cardQueries.getCardsData();
 
-        const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
+        const sortedCards = [...cardData].sort((a,b) => a.name.localeCompare(b.name));
         const cat_name = category_data.name.toLowerCase()
         const seriesMembersList = sortedCards.filter(card => card.series_name.toLowerCase().includes(cat_name))
         const classMembersList = sortedCards.filter(card => card.card_class.toLowerCase().includes(cat_name))
@@ -45,17 +45,10 @@ function CardCategoryDetail() {
         } else {
             setMembers(classMembersList)
         }
-
-        // const support_card_list = []
-        // for (let supportItem of category_data.support) {
-        //     if (cardData.cards.find(card => card.card_number === supportItem)) {
-        //         support_card_list.push(cardData.cards.find(card => card.card_number === supportItem))
-        //     }
-        // }
         const support_card_list = category_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
         const anti_support_card_list = category_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };
