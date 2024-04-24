@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
+import extraEffectQueries from "../../QueryObjects/ExtraEffectQueries";
+import cardQueries from "../../QueryObjects/CardQueries";
 
 
 function ExtraEffectDetails() {
@@ -26,21 +28,19 @@ function ExtraEffectDetails() {
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
     const getExtraEffect = async() =>{
-        const extraEffectResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/extra_effects/${extra_effect_id}/`);
-        const extra_effect_data = await extraEffectResponse.json();
+        const extra_effect_data = await extraEffectQueries.getExtraEffectDataById(extra_effect_id);
         setExtraEffect(extra_effect_data);
 
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
+        const cardData = await cardQueries.getCardsData();
 
-        const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
+        const sortedCards = [...cardData].sort((a,b) => a.name.localeCompare(b.name));
         const tagMembersList = sortedCards.filter(card => card.extra_effects.includes(extra_effect_data.effect_number))
         setMembers(tagMembersList)
 
         const support_card_list = extra_effect_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
         const anti_support_card_list = extra_effect_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };

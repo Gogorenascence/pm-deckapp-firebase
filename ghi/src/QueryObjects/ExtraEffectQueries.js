@@ -11,6 +11,21 @@ const extraEffectQueries = {
         console.log(data)
         return data
     },
+    getExtraEffectDataById: async function getExtraEffectDataById(id) {
+        const extraEffectsCollectionRef = collection(db, "extra_effects");
+        const extraEffectQuery = query(
+            extraEffectsCollectionRef,
+            where("id", "==", id)
+            )
+        const snapshot = await getDocs(extraEffectQuery);
+        if (snapshot.empty) {
+            console.log("No matching documents.");
+            return null;
+        } else {
+            const extraEffectData = snapshot.docs[0].data();
+            return extraEffectData;
+        }
+    },
     getExtraEffectData: async function getExtraEffectData(extraEffectNumber) {
         const extraEffectsCollectionRef = collection(db, "extra_effects");
         const int_effect_number = parseInt(extraEffectNumber, 10);

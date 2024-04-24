@@ -11,6 +11,21 @@ const cardTypeQueries = {
         console.log(data)
         return data
     },
+    getCardTypeDataById: async function getCardTypeData(id) {
+        const cardTypesCollectionRef = collection(db, "card_types");
+        const cardTypeQuery = query(
+            cardTypesCollectionRef,
+            where("id", "==", id)
+            )
+        const snapshot = await getDocs(cardTypeQuery);
+        if (snapshot.empty) {
+            console.log("No matching documents.");
+            return null;
+        } else {
+            const cardTypeData = snapshot.docs[0].data();
+            return cardTypeData;
+        }
+    },
     getCardTypeData: async function getCardTypeData(cardTypeNumber) {
         const cardTypesCollectionRef = collection(db, "card_types");
         const int_type_number = parseInt(cardTypeNumber, 10);

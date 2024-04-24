@@ -5,79 +5,90 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { NavLink, useParams, useNavigate} from 'react-router-dom';
 import BackButton from "../Display/BackButton";
 import { PullsContext } from "../Context/PullsContext";
+import PackOpener from "./PackOpener";
+import boosterSetQueries from "../QueryObjects/BoosterSetQueries";
 
 
 function PullPage() {
 
     const {card_set_id} = useParams();
     const [boosterSet, setBoosterSet] = useState("");
+    const [perPack, setPerPack] = useState(0)
+    const [date_created, setDateCreated] = useState([])
     const [maxVariables, setMaxVariables] = useState([]);
     const [normals, setNormals] = useState([]);
     const [rares, setRares] = useState([]);
     const [superRares, setSuperRares] = useState([]);
     const [ultraRares, setUltraRares] = useState([]);
-    const [date_created, setDateCreated] = useState([]);
-    const [perPack, setPerPack] = useState(0)
+
     const [num, setNum] = useState("");
     const [savedPulls, setSavedPulls] = useState([]);
     const {
+        boosterSetPulled,
         setBoosterSetPulled,
         pulls,
-        setPulls
-    }= useContext(PullsContext);
+        setPulls,
+        pullsList,
+        pulling,
+    } = useContext(PullsContext);
 
-    const lastSavedPullRef = useRef(null);
     const navigate = useNavigate()
 
-
-
     const [loading, setLoading] = useState(false)
-
-    const [listView, setListView] = useState(false);
     const [fullView, setFullView] = useState(false)
 
     const getBoosterSet = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
-        const boosterSetData = await response.json();
+        const boosterSetData = await boosterSetQueries.getBoosterSetDataById(card_set_id);
         const ratio = boosterSetData.ratio
         const perPack = ratio.normals + ratio.rares + ratio.supers + ratio.mv
         setDateCreated(boosterSetData.created_on.date_created)
-        setUltraRares(boosterSetData.ultra_rares)
-        setSuperRares(boosterSetData.super_rares)
-        setRares(boosterSetData.rares)
-        setNormals(boosterSetData.normals)
-        setMaxVariables(boosterSetData.mv)
         setPerPack(perPack)
         setBoosterSet(boosterSetData);
     };
 
+    const getCardLists = async() =>{
+        const listData = await boosterSetQueries.getBoosterSetListDataById(card_set_id);
+        setMaxVariables(listData.max_variables)
+        setNormals(listData.normals)
+        setRares(listData.rares)
+        setSuperRares(listData.super_rares)
+        setUltraRares(listData.ultra_rares)
+    }
+
     const getPulls = async() =>{
         setLoading(true)
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/open/${num}`);
-        const pullData = await response.json();
-
         const newPulls = []
-        for (let pull of pullData.pulls) {
+        for (let pull of pullsList.pulls) {
             newPulls.push(pull.pulled_cards)
         }
         const allPulls = savedPulls.concat(newPulls)
         console.log(allPulls)
-        setLoading(false)
+
         setPulls(allPulls)
 
+        if (lastSavedPullRef.current) {
+            lastSavedPullRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+        findUltras()
     }
 
     useEffect(() => {
+        window.scroll(0, 0);
+        document.body.style.overflow = 'auto';
         getBoosterSet();
+        getCardLists();
+    },[]);
+
+    useEffect(() => {
         document.title = `Pack Openings - PM CardBase`
         return () => {
             document.title = "PlayMaker CardBase"
         };
     },[]);
 
-    const handleListView = (event) => {
-        setListView(!listView);
-    };
+    useEffect(() => {
+        getPulls()
+    },[pulling]);
 
     const handleFullView = (event) => {
         setFullView(!fullView);
@@ -87,33 +98,11 @@ function PullPage() {
         setNum(event.target.value)
     };
 
-
-    const handleSubmit = (event) => {
-        if (num) {
-            getPulls();
-            if (lastSavedPullRef.current) {
-                lastSavedPullRef.current.scrollIntoView({ behavior: 'smooth' });
-            }
-            setBoosterSetPulled(boosterSet)
-            // findUltras()
-        } else {
-            alert("No number of packs selected")
-        }
-    };
-
-    // const findUltras = (pull) => {
-    //     const ultras = []
-    //     for (let card of pull) {
-    //         if (ultraRares.includes(card.card_number)) {
-    //             ultras.push(card)
-    //         }
-    //     }
-    //     return ultras
-    // }
+    const lastSavedPullRef = useRef(null);
 
     const findUltras = (pull) => {
         return pull.reduce(function(ultras, card, index, arr) {
-            if (ultraRares.includes(card.card_number)) {
+            if (boosterSet.ultra_rares.includes(card.card_number)) {
                 ultras.push(card);
             }
             return ultras;
@@ -131,27 +120,9 @@ function PullPage() {
         setSavedPulls([])
     }
 
-    // const getAllCards = (pulls) => {
-    //     const all_cards = []
-    //     for (let pull of pulls) {
-    //         for (let card of pull) {
-    //             all_cards.push(card)
-    //         }
-    //     }
-    //     return all_cards
-    // }
-
-
-    // const getAllCards = (pulls) => {
-        //     return pulls.reduce(function(all_cards, pull, index, arr){
-            //         return all_cards.concat(pull)
-            //     }, [])
-            // }
-
     const getAllCards = (pulls) => {
         return pulls.reduce((all_cards, pull) => all_cards.concat(pull))
     }
-
 
     return (
         <div className="white-space">
@@ -166,7 +137,7 @@ function PullPage() {
                     </div>
                 </div>
                 <Card.ImgOverlay className="blackfooter2 mt-auto">
-                        <h3 className="left margin-top-30 media-margin-top-none">{boosterSet.name}</h3>
+                        <h3 className="left cd-container-child media-margin-top-none">{boosterSet.name}</h3>
                         <h6 className="left"
                             style={{margin: '0px 0px 10px 10px', fontWeight: "600"}}
                             >
@@ -206,24 +177,15 @@ function PullPage() {
                     onChange={handleChangeNum}
                     value={num}>
                 </input>
-                <button
-                    className="left media-center"
-                    onClick={handleSubmit}>
-                        Open
-                </button>
-                {/* {listView?
-                    <button
-                    className="left"
-                    onClick={handleListView}
-                    >
-                    Image View
-                    </button>:
-                    <button
-                    className="left"
-                        onClick={handleListView}
-                    >
-                        List View
-                    </button>} */}
+                <PackOpener
+                    boosterSet={boosterSet}
+                    maxVariables={maxVariables}
+                    normals={normals}
+                    rares={rares}
+                    superRares={superRares}
+                    ultraRares={ultraRares}
+                    num={num}
+                />
                 {fullView?
                     <button
                         className="left media-center"
@@ -243,18 +205,14 @@ function PullPage() {
                 <button onClick={handleClearPulls} className="left media-center">
                     Clear Pulls
                 </button>
-                <button className="left media-center" onClick={() => navigate(`/pulls/deckbuilder`)}>
+                <button
+                    className="left media-center"
+                    onClick={() => navigate(`/pulls/deckbuilder`)}>
                     Create Deck
                 </button>
 
                 <BackButton/>
             </div>
-
-            { loading ?
-                    <div className="loading-container">
-                        <div className="loading-spinner"></div>
-                    </div> :
-                null}
 
             {!fullView && pulls.length > 0?
                 (pulls.map((pull, pullIndex) => {
@@ -284,7 +242,7 @@ function PullPage() {
                                             return (
                                                 <div style={{display: "flex", justifyContent: "center"}}>
                                                     <NavLink to={`/cards/${card.card_number}`} key={card.name}>
-                                                        {ultraRares.includes(card.card_number) ?
+                                                        {boosterSet.ultra_rares.includes(card.card_number) ?
                                                             <div className="ultra">
                                                                 <img
                                                                     className="builder-card4"
@@ -336,7 +294,7 @@ function PullPage() {
                                     return (
                                         <div style={{display: "flex", justifyContent: "center"}}>
                                             <NavLink to={`/cards/${card.card_number}`} key={card.name}>
-                                                {ultraRares.includes(card.card_number) ?
+                                                {boosterSet.ultra_rares.includes(card.card_number) ?
                                                     <div className="ultra">
                                                         <img
                                                             className="builder-card4"

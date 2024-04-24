@@ -1,5 +1,5 @@
 import { db } from "../Firebase"
-import { getDocs, collection } from "firebase/firestore"
+import { getDocs, collection, query, orderBy, where } from "firebase/firestore"
 
 const articleQueries = {
     getarticlesData: async function getarticlesData() {
@@ -9,7 +9,22 @@ const articleQueries = {
             ...doc.data(),
         }))
         return data
-    }
+    },
+    getArticleDataById: async function getArticleDataById(id) {
+        const articleCollectionRef = collection(db, "articles");
+        const articleQuery = query(
+            articleCollectionRef,
+            where("id", "==", id)
+        )
+        const snapshot = await getDocs(articleQuery);
+        if (snapshot.empty) {
+            console.log("No matching documents.");
+            return null;
+        } else {
+            const articleData = snapshot.docs[0].data();
+            return articleData;
+        }
+    },
 }
 
 export default articleQueries

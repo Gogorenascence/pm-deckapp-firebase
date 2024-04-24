@@ -251,11 +251,11 @@ function NavBar() {
                       Card Search
                     </div>
                   </NavLink>
-                  <NavLink className="dropdown-select username2" to="/topcards" onClick={() => followLink()}>
+                  {/* <NavLink className="dropdown-select username2" to="/topcards" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
                       Top Cards
                     </div>
-                  </NavLink>
+                  </NavLink> */}
                   <NavLink className="dropdown-select username2" to="/cardsets" onClick={() => followLink()}>
                     <div className="nav-dropdown-item">
                       Card Set Search
@@ -431,11 +431,11 @@ function NavBar() {
                   Card Search
                 </div>
               </NavLink>
-              <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => handleShowMobileMenu()}>
+              {/* <NavLink className="nav-dropdown-item" to="/topcards" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
                   Top Cards
                 </div>
-              </NavLink>
+              </NavLink> */}
               <NavLink className="nav-dropdown-item" to="/cardsets" onClick={() => handleShowMobileMenu()}>
                 <div className="dropdown-select">
                   Card Set Search

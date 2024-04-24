@@ -1,5 +1,5 @@
 import { db } from "../Firebase"
-import { getDocs, collection } from "firebase/firestore"
+import { getDocs, collection, query, orderBy, where } from "firebase/firestore"
 
 const deckQueries = {
     getdecksData: async function getdecksData() {

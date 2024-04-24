@@ -11,6 +11,21 @@ const cardTagQueries = {
         console.log(data)
         return data
     },
+    getCardTagDataById: async function getCardTagDataById(id) {
+        const cardTagsCollectionRef = collection(db, "card_tags");
+        const tagQuery = query(
+            cardTagsCollectionRef,
+            where("id", "==", id)
+        )
+        const snapshot = await getDocs(tagQuery);
+        if (snapshot.empty) {
+            console.log("No matching documents.");
+            return null;
+        } else {
+            const tagData = snapshot.docs[0].data();
+            return tagData;
+        }
+    },
     getCardTagData: async function getCardTagData(tagNumber) {
         const cardTagsCollectionRef = collection(db, "card_tags");
         const int_tag_number = parseInt(tagNumber, 10);

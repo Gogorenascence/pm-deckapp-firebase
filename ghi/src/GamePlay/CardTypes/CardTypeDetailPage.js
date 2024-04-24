@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
+import cardTypeQueries from "../../QueryObjects/CardTypeQueries";
+import cardQueries from "../../QueryObjects/CardQueries";
 
 
 function CardTypeDetails() {
@@ -29,21 +31,19 @@ function CardTypeDetails() {
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
     const getCardType = async() =>{
-        const cardTypeResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/card_types/${card_type_id}/`);
-        const card_type_data = await cardTypeResponse.json();
+        const card_type_data = await cardTypeQueries.getCardTypeDataById(card_type_id);
         setCardType(card_type_data);
 
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
+        const cardData = await cardQueries.getCardsData();
 
-        const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
+        const sortedCards = [...cardData].sort((a,b) => a.name.localeCompare(b.name));
         const typeMembersList = sortedCards.filter(card => card.card_type[0] === card_type_data.type_number)
         setMembers(typeMembersList)
 
         const support_card_list = card_type_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === supportItem)).filter(card => card !== undefined)
         const anti_support_card_list = card_type_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
+            cardData.find(card => card.card_number === antiSupportItem)).filter(card => card !== undefined)
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };

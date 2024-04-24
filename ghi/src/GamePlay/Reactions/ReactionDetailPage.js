@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
+import reactionQueries from "../../QueryObjects/ReactionQueries";
+import cardQueries from "../../QueryObjects/CardQueries";
 
 
 function ReactionDetails() {
@@ -26,21 +28,19 @@ function ReactionDetails() {
     const [showAntiSupport, setShowAntiSupport] = useState(true);
 
     const getReaction = async() =>{
-        const reactionResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/reactions/${reaction_id}/`);
-        const reaction_data = await reactionResponse.json();
+        const reaction_data = await reactionQueries.getReactionDataById(reaction_id);
         setReaction(reaction_data);
 
-        const cardResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/cards/`);
-        const cardData = await cardResponse.json();
+        const cardData = await cardQueries.getCardsData();
 
-        const sortedCards = [...cardData.cards].sort((a,b) => a.name.localeCompare(b.name));
+        const sortedCards = [...cardData].sort((a,b) => a.name.localeCompare(b.name));
         const reactionMembersList = sortedCards.filter(card => card.reactions.includes(reaction_data.reaction_number))
         setMembers(reactionMembersList)
 
         const support_card_list = reaction_data.support.map(supportItem =>
-            cardData.cards.find(card => card.card_number === supportItem))
+            cardData.find(card => card.card_number === supportItem))
         const anti_support_card_list = reaction_data.anti_support.map(antiSupportItem =>
-            cardData.cards.find(card => card.card_number === antiSupportItem))
+            cardData.find(card => card.card_number === antiSupportItem))
         setSupportList(support_card_list)
         setAntiSupportList(anti_support_card_list)
     };

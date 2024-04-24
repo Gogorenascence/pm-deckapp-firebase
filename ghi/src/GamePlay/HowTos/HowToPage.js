@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../../Context/AuthContext";
 import { Card } from "react-bootstrap";
+import howToQueries from "../../QueryObjects/HowToQueries"
 
 function HowToPage() {
 
@@ -24,8 +25,7 @@ function HowToPage() {
     const [images, setImages] = useState([])
 
     const getHowTo = async() =>{
-        const howTosResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/how_tos/`);
-        const howTosData = await howTosResponse.json();
+        const howTosData = await howToQueries.getHowTosData();
         const howToData = howTosData.find(howToItem => howToItem.id === how_to_id)
 
         const sortedHowTos = howTosData.sort((a,b) => a.how_to_number - b.how_to_number)

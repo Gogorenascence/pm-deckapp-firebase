@@ -5,6 +5,8 @@ const PullsContext = createContext();
 const PullsContextProvider = ({ children }) => {
     const [boosterSetPulled, setBoosterSetPulled] = useState("")
     const [pulls, setPulls] = useState([]);
+    const [pullsList, setPullsList] = useState([]);
+    const [pulling, setPulling] = useState(false);
     const [usePool, setUsePool] = useState(true);
 
     return (
@@ -13,6 +15,10 @@ const PullsContextProvider = ({ children }) => {
             setBoosterSetPulled,
             pulls,
             setPulls,
+            pullsList,
+            setPullsList,
+            pulling,
+            setPulling,
             usePool,
             setUsePool
         }}>

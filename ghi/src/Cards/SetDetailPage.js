@@ -5,6 +5,8 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useParams} from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import BackButton from "../Display/BackButton";
+import boosterSetQueries from "../QueryObjects/BoosterSetQueries";
+import cardQueries from "../QueryObjects/CardQueries";
 
 
 function SetDetailPage() {
@@ -18,6 +20,7 @@ function SetDetailPage() {
     const [superRares, setSuperRares] = useState([]);
     const [ultraRares, setUltraRares] = useState([]);
     const [date_created, setDateCreated] = useState([])
+    const [perPack, setPerPack] = useState(0)
 
     const [listView, setListView] = useState(false);
     const [showMaxVariables, setShowMaxVariables] = useState(false);
@@ -26,11 +29,9 @@ function SetDetailPage() {
     const [showSuperRares, setShowSuperRares] = useState(false);
     const [showUltraRares, setShowUltraRares] = useState(false);
 
-    const [perPack, setPerPack] = useState(0)
 
     const getBoosterSet = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}`);
-        const boosterSetData = await response.json();
+        const boosterSetData = await boosterSetQueries.getBoosterSetDataById(card_set_id);
         const ratio = boosterSetData.ratio
         const perPack = ratio.normals + ratio.rares + ratio.supers + ratio.mv
         setDateCreated(boosterSetData.created_on.date_created)
@@ -39,8 +40,7 @@ function SetDetailPage() {
     };
 
     const getCardLists = async() =>{
-        const response = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/booster_sets/${card_set_id}/list`);
-        const listData = await response.json();
+        const listData = await boosterSetQueries.getBoosterSetListDataById(card_set_id);
         setMaxVariables(listData.max_variables)
         setNormals(listData.normals)
         setRares(listData.rares)

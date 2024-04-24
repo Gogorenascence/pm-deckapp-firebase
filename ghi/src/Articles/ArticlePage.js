@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from "../Context/AuthContext";
 import { Card } from "react-bootstrap";
+import articleQueries from "../QueryObjects/ArticleQueries";
 
 function ArticlePage() {
 
@@ -26,8 +27,7 @@ function ArticlePage() {
     })
 
     const getArticle = async() =>{
-        const articleResponse = await fetch(`${process.env.REACT_APP_FASTAPI_SERVICE_API_HOST}/api/articles/${article_id}/`);
-        const articleData = await articleResponse.json();
+        const articleData = await articleQueries.getArticleDataById(article_id);
         setArticle(articleData);
 
         const processedImages = []
